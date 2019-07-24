@@ -1,0 +1,8 @@
+export const primaryColor = "#f03838"
+export const darkGray = "#424242"
+export const mobileWidth = "600px"
+export const tabletWidth = "700px"
+export const desktopWidth = "889px"
+export const siteTitle = "Figdog"
+export const siteSlogan = "PERSPECTIVES ON MARKETING AND MANAGED IT SERVICES"
+export const logo = "undefined"
