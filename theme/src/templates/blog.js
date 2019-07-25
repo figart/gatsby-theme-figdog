@@ -1,12 +1,12 @@
 import React from 'react'
 import { graphql } from "gatsby"
 import PropTypes from 'prop-types'
-import Layout from '../components/layout'
+import Layout from 'figdog-theme/src/components/layout'
 import { BLOCKS, MARKS } from "@contentful/rich-text-types"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import Container from '../components/container'
+import Container from 'figdog-theme/src/components/container'
 import styled from "styled-components"
-import * as variable from '../components/variables'
+import * as variable from 'figdog-theme/src/components/variables'
 
 const TitleSlogan = styled.div`
 

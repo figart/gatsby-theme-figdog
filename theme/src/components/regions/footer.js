@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from "styled-components"
-import Container from '../container'
-import * as variable from '../variables'
+import Container from 'figdog-theme/src/components/container'
+import * as variable from 'figdog-theme/src/components/variables'
 import { Link } from 'gatsby'
 
 const FooterStyle = styled.footer`

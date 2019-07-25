@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import * as variable from './variables.js'
+import * as variable from 'figdog-theme/src/components/variables.js'
 const Container = styled.div`
   max-width: ${variable.desktopWidth};
   display:block;

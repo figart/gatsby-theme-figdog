@@ -1,11 +1,11 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import PropTypes from 'prop-types'
-import Header from './regions/header'
-import Footer from './regions/footer'
+import Header from 'figdog-theme/src/components/regions/header'
+import Footer from 'figdog-theme/src/components/regions/footer'
 import styled from "styled-components"
 import { Global, css } from "@emotion/core"
-import * as variable from './variables.js'
+import * as variable from 'figdog-theme/src/components/variables.js'
 
 const GlobalStyles = styled.div`
     color:${variable.darkGray}

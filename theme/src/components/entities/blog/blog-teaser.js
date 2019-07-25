@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import * as variable from '../../variables'
+import * as variable from 'figdog-theme/src/components/variables'
 import styled from 'styled-components'
 
 const BlogTeaserContainer = styled.div`

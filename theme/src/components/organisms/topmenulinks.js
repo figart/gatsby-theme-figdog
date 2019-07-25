@@ -2,8 +2,8 @@ import { Link } from 'gatsby'
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
-import Container from '../container'
-import * as variable from '../variables.js'
+import Container from 'figdog-theme/src/components/container'
+import * as variable from 'figdog-theme/src/components/variables.js'
 
 const Nav = styled.nav`
     width:100%;

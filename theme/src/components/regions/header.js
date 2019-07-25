@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from "styled-components"
-import Container from '../container'
-import TopMenuLinks from '../organisms/topmenulinks'
+import Container from 'figdog-theme/src/components/container'
+import TopMenuLinks from 'figdog-theme/src/components/organisms/topmenulinks'
+import * as variable from 'figdog-theme/src/components/variables.js'
 
 const HeaderStyle = styled.header`
 
@@ -24,7 +25,6 @@ export const Header = ({
             <TopMenuLinks
             topMenuLinks={topMenuLinks}
             >
-
             </TopMenuLinks>
         </Container>
     </HeaderStyle>
