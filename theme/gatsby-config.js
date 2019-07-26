@@ -30,7 +30,7 @@ module.exports = options => ({
         menuLinks: options.menuLinks || [
             {
                name:'Blog',
-               link:'/blog'
+               link:'/'
             },
             {
                 name:'Contact',
