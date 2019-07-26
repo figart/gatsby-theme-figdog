@@ -7,7 +7,7 @@ import * as variable from 'figdog-theme/src/components/variables.js'
 
 const Nav = styled.nav`
     width:100%;
-    padding:20px 0px;
+    padding:40px 0px 10px 0px;
     ul{
         display:flex;
         justify-content:center;
@@ -21,10 +21,11 @@ const Nav = styled.nav`
             }
             a{
                 color:white;
-                background-color:${variable.primaryColor}
+                background-color:${variable.primaryColor};
                 padding: 5px 10px 6px;
                 text-decoration:none;
                 text-transform:uppercase;
+                font-size:14px;
                 &:hover{
                     background-color:${variable.darkGray};
                 }

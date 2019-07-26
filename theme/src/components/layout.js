@@ -8,12 +8,12 @@ import { Global, css } from "@emotion/core"
 import * as variable from 'figdog-theme/src/components/variables.js'
 
 const GlobalStyles = styled.div`
-    color:${variable.darkGray}
+    color:${variable.darkGray};
     font-family: "Open Sans", arial, sans-serif;
     font-size: 18px;
     line-height: 1.8;
     p a{
-        color:${variable.primaryColor}
+        color:${variable.primaryColor};
     }
     h1{
         font-size: 52px;
@@ -65,6 +65,21 @@ const Layout = ({ children }) => (
                     padding:0px;
                     box-sizing:border-box;
                     margin:0px;
+                    color:${variable.darkGray};
+                    font-family: "Open Sans", arial, sans-serif;
+                    font-size: 18px;
+                    line-height: 1.8;
+                    p a{
+                      color:${variable.primaryColor};
+                    }
+                    h1{
+                      font-size: 52px;
+                      font-weight: 700;
+                      margin: 15px 0;
+                      text-align: center;
+                      text-transform: uppercase;
+                      line-height:1.2em;
+                    }
                 }
             `}
         />

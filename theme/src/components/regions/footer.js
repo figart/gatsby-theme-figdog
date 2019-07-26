@@ -16,7 +16,7 @@ const FooterStyle = styled.footer`
     }
     a{
         color:white;
-        background-color:${variable.primaryColor}
+        background-color:${variable.primaryColor};
         padding: 5px 10px 6px;
         text-decoration:none;
         text-transform:uppercase;

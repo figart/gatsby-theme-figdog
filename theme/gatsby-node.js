@@ -100,6 +100,7 @@ exports.onPreBootstrap = ({ store }, options) => {
             file.write('export const desktopWidth = "' + options.breakpoints.desktopWidth + '"'+ '\n');
             file.write('export const siteTitle = "' + options.siteTitle + '"'+ '\n');
             file.write('export const siteSlogan = "' + options.siteSlogan + '"'+ '\n');
+            file.write('export const lightGray = "' + options.colors.lightGray + '"'+ '\n');
             file.write('export const logo = "' + options.breakpoints.logo + '"');
 
         })

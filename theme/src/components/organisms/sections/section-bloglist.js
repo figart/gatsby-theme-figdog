@@ -5,6 +5,7 @@ import BlogTeaser from "../../entities/blog/blog-teaser"
 
 const BlogListStyle = styled.section`
 
+  
 
 `;
 

@@ -4,7 +4,7 @@ module.exports = options => ({
         siteTitle: options.siteTitle || `Figdog Theme`,
         siteSlogan: options.siteSlogan || `Our fancy slogan to capture views`,
         logo: options.logo || `/src/images/figdog-logo.png`,
-        colors: options.colors || { primary: "#f03838", darkGray: "#303030", darkDarkGray: "#303030"},
+        colors: options.colors || { primary: "#f03838", darkGray: "#303030", darkDarkGray: "#303030", lightGray: "#aeadad"},
         breakpoints: options.breakpoints || {mobileWidth: `800px`, tabletWidth: `1100px`, desktopWidth: `1260px`},
         topMenuLinks: options.topMenuLinks || [
             {
@@ -50,11 +50,20 @@ module.exports = options => ({
                 accessToken: `kMu_WbJUifLrb1hDLZ059bxoQ4P0MHFhgEcHHPHtV8Q`,
             },
         },
+        `gatsby-plugin-styled-components`,
         `gatsby-plugin-emotion`,
         {
             resolve: `gatsby-plugin-compile-es6-packages`,
             options: {
               modules: [`figdog-theme`]
+            }
+        },
+        {
+            resolve: `gatsby-plugin-google-fonts`,
+            options: {
+              fonts: [
+                `Open Sans\:300,400,400i,700` // you can also specify font weights and styles
+              ],
             }
           }
     ]
