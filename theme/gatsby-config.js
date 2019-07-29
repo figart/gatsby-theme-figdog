@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 module.exports = options => ({
     siteMetadata: {
         blogPath: options.blogPath || `/blog`,
@@ -46,8 +48,8 @@ module.exports = options => ({
         {
             resolve: "gatsby-source-contentful",
             options: {
-                spaceId: `6slqt30vbp6o`,
-                accessToken: `kMu_WbJUifLrb1hDLZ059bxoQ4P0MHFhgEcHHPHtV8Q`,
+                spaceId: process.env.spaceId,
+                accessToken: process.env.accessToken,
             },
         },
         `gatsby-plugin-styled-components`,

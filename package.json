@@ -1,4 +1,10 @@
 {
     "private": true,
-    "workspaces": ["theme", "demo"]
+    "workspaces": [
+        "theme",
+        "demo"
+    ],
+    "dependencies": {
+        "dotenv": "^8.0.0"
+    }
 }
