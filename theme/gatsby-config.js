@@ -48,8 +48,8 @@ module.exports = options => ({
         {
             resolve: "gatsby-source-contentful",
             options: {
-                spaceId: process.env.spaceId,
-                accessToken: process.env.accessToken,
+                spaceId: process.env.CONTENTFUL_SPACE_ID,
+                accessToken: process.env.CONTENTFUL_DELIVERY_TOKEN,
             },
         },
         `gatsby-plugin-styled-components`,
