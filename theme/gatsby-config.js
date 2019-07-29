@@ -7,7 +7,7 @@ module.exports = options => ({
         siteSlogan: options.siteSlogan || `Our fancy slogan to capture views`,
         logo: options.logo || `/src/images/figdog-logo.png`,
         colors: options.colors || { primary: "#f03838", darkGray: "#303030", darkDarkGray: "#303030", lightGray: "#aeadad"},
-        breakpoints: options.breakpoints || {mobileWidth: `800px`, tabletWidth: `1100px`, desktopWidth: `1260px`},
+        breakpoints: options.breakpoints || {mobileWidth: `800px`, tabletWidth: `1100px`, desktopWidth: `1268px`},
         topMenuLinks: options.topMenuLinks || [
             {
                name:'Figdog Theme',
