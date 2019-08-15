@@ -1,16 +1,20 @@
 import styled from "styled-components"
 import * as variable from 'figdog-theme/src/components/variables.js'
 const Container = styled.div`
-  max-width: ${variable.desktopWidth};
+  width: calc(${variable.desktopWidth});
   display:block;
-  padding:0px 60px;
+  padding:0px 20px;
   margin:0 auto;
+  box-sizing:border-box;
   @media (max-width: ${variable.tabletWidth}) {
-    max-width: ${variable.tabletWidth};
+    width: 100%;
+    padding:0px 15px;
+    box-sizing:border-box;
   }
   @media (max-width: ${variable.mobileWidth}) {
-    max-width: ${variable.mobileWidth};
-    padding:0px 15px;
+    // width: 100%;
+    // padding:0px 15px;
+    // box-sizing:border-box;
   }
 `;
 

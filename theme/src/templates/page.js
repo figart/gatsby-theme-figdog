@@ -121,12 +121,7 @@ export const PagePostTemplate = ({
   }) => {
     return (
         <Layout>
-            <Container>
-                <TitleSlogan>
-                    <h1>{title}</h1>
-                    {homePage === true && <h3>{variable.siteSlogan}</h3>}
-                    <h3>{subTitle}</h3>
-                </TitleSlogan>     
+            <Container>   
                 <Body>
                 {documentToReactComponents(body, options)}
                 </Body>

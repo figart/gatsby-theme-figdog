@@ -23,6 +23,9 @@ export const BlogList = () => (
                 }
                 createdAt(formatString: "ddd, MMM M, Y")
                 title
+                teaser{
+                  json
+                }
             }
         }
     }

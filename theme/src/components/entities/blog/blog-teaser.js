@@ -2,36 +2,95 @@ import React from 'react'
 import { Link } from 'gatsby'
 import * as variable from 'figdog-theme/src/components/variables'
 import styled from 'styled-components'
+import { Global, css } from "@emotion/core"
+import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types"
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 const BlogTeaserContainer = styled.div`
-
-    border-bottom: 1px dotted #303030;
-    margin: 0;
+    margin: 40px 0px;
     position: relative;
-    a{
-        -webkit-transition: all .2s ease-in-out;
-        -moz-transition: all .2s ease-in-out;
-        transition: all .2s ease-in-out;
-        display: block;
-        color: ${variable.darkGray};
-        padding: 20px 5px;
-        text-decoration:none;
-        &:hover{
-            color:${variable.primaryColor};
-            background: #fcf5f5;
-            padding: 20px 12px;
-        }
-    }
 
 `
+
+const Bold = ({ children }) => <span className="bold">{children}</span>
+const Text = ({ children }) => <p className="align-center">{children}</p>
+
+const options = {
+    renderMark: {
+      [MARKS.BOLD]: text => <Bold>{text}</Bold>,
+    },
+    renderNode: {
+      [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
+    },
+    renderNode: {
+        [BLOCKS.EMBEDDED_ASSET]: (node) => {
+            const { title, description, file } = node.data.target.fields;
+            const mimeType = file['en-US'].contentType
+            const mimeGroup = mimeType.split('/')[0]
+      
+            switch (mimeGroup) {
+              case 'image':
+                return <img
+                  title={ title ? title['en-US'] : null}
+                  alt={description ?  description['en-US'] : null}
+                  src={file['en-US'].url}
+                />
+              case 'application':
+                return <a
+                  alt={description ?  description['en-US'] : null}
+                  href={file['en-US'].url}
+                  >{ title ? title['en-US'] : file['en-US'].details.fileName }
+                </a>
+              default:
+                return <span style={{backgroundColor: 'red', color: 'white'}}> {mimeType} embedded asset </span>
+            }
+        }
+      },
+  }
 
 const BlogTeaser = ({post}) => {
     console.log(post)
 return(
-    <BlogTeaserContainer>
-        <Link to={post.fields.slug}>
-            <strong>{post.title}</strong> / {post.createdAt}
+    <BlogTeaserContainer className="blog-teaser">
+            <Global
+            styles={css`
+                .blog-teaser{
+                    color:${variable.primaryColor};
+                    a.blog-teaser-link-title{
+                        color:${variable.primaryColor};
+                        font-weight:bold;
+                        display:block;
+                        font-size:20px;
+                        text-decoration:none;
+                    }
+                    .blog-teaser-date{
+                        color:${variable.orange};
+                        font-size:16px;
+                    }
+                }
+                body.dark{
+                    color:${variable.lightGray};
+                    .blog-teaser{
+                        color:${variable.lightGray};
+                        a.blog-teaser-link-title{
+                            color:white;
+                        }
+                        a{
+                            color:white;
+                        }
+                        .blog-teaser-date{
+                            color:${variable.lightGray};
+                        }
+                    }
+                }
+            `}
+            />
+        <Link className="blog-teaser-link-title" to={post.fields.slug}>
+            {post.title}
         </Link>
+            <div className="blog-teaser-date">{post.createdAt}</div>
+           {post.teaser && <div className="blog-teaser-body">{documentToReactComponents(post.teaser.json, options) }</div>}
+        
     
     </BlogTeaserContainer>
 )

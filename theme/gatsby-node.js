@@ -101,7 +101,12 @@ exports.onPreBootstrap = ({ store }, options) => {
             file.write('export const siteTitle = "' + options.siteTitle + '"'+ '\n');
             file.write('export const siteSlogan = "' + options.siteSlogan + '"'+ '\n');
             file.write('export const lightGray = "' + options.colors.lightGray + '"'+ '\n');
-            file.write('export const logo = "' + options.breakpoints.logo + '"');
+            file.write('export const cream = "' + options.colors.cream + '"'+ '\n');
+            file.write('export const gold = "' + options.colors.gold + '"'+ '\n');
+            file.write('export const orange = "' + options.colors.orange + '"'+ '\n');
+            file.write('export const red = "' + options.colors.red + '"'+ '\n');
+            file.write('export const darkBlue = "' + options.colors.darkBlue + '"'+ '\n');
+            file.write('export const logo = "' + options.logo + '"');
 
         })
 }

@@ -2,27 +2,35 @@ import React from 'react'
 import styled from "styled-components"
 import Container from 'figdog-theme/src/components/container'
 import * as variable from 'figdog-theme/src/components/variables'
+import FooterMenuLinks from 'figdog-theme/src/components/organisms/footermenulinks'
 import { Link } from 'gatsby'
+import bg from 'figdog-theme/src/images/bg.png'
 
 const FooterStyle = styled.footer`
-    background-color:${variable.darkGray};
+    background-image:url(${bg});
+    background-position: center;
+    background-size: cover;
     margin-top: 95px;
-    .footer-container{
+    padding:50px 0px;
+    color:white;
+    .footer-container nav{
         text-align:center;
-        height: 265px;
         display:flex;
         justify-content:center;
         align-items:center;
     }
     a{
         color:white;
-        background-color:${variable.primaryColor};
-        padding: 5px 10px 6px;
         text-decoration:none;
         text-transform:uppercase;
         &:hover{
-            background-color:${variable.darkGray};
+
         }
+    }
+    .footer-copy{
+        text-align:center;
+        margin-top:40px;
+        font-size:14px;
     }
 
 `;
@@ -30,11 +38,15 @@ const FooterStyle = styled.footer`
 
 
 export const Footer = ({
+    footerMenuLinks
   }) => {
     return (
     <FooterStyle>
         <Container className="footer-container">
-            <Link to="/">{variable.siteTitle}</Link>
+            <FooterMenuLinks
+            footerMenuLinks={footerMenuLinks}
+            ></FooterMenuLinks>
+            <div className="footer-copy">Copyright 2019 figdog</div>
         </Container>
     </FooterStyle>
 
