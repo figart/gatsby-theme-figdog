@@ -86,7 +86,7 @@ const Layout = ({ children }) => (
                   color:white;
                   background-color:${variable.darkBlue};
                   a{
-                    color:white;
+                    color:${variable.lightGray};
                   }
                 }
             `}

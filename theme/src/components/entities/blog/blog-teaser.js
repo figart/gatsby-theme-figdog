@@ -76,7 +76,7 @@ return(
                             color:white;
                         }
                         a{
-                            color:white;
+                            color:${variable.lightGray};
                         }
                         .blog-teaser-date{
                             color:${variable.lightGray};

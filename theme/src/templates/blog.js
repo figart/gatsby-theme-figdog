@@ -8,6 +8,8 @@ import Container from 'figdog-theme/src/components/container'
 import styled from "styled-components"
 import * as variable from 'figdog-theme/src/components/variables'
 import { Global, css } from "@emotion/core"
+import dog from 'figdog-theme/src/images/dog.png'
+import whiteDog from 'figdog-theme/src/images/whitedog.png'
 
 
 
@@ -109,6 +111,38 @@ export const BlogPostTemplate = ({
         <Layout>
             <Global
             styles={css`
+            .white-dog{
+                display:none;
+            }
+            .social-dog{
+                text-align:right;
+                .social{
+                    display:flex;
+                    justify-content:flex-end;
+                }
+                a{
+                    border:0px;
+                    text-decoration:none;
+                }
+                i{
+                    border:thin solid ${variable.primaryColor};
+                    width:32px;
+                    height:32px;
+                    border-radius:25px;
+                    margin-left:11px;
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                
+                }
+                .social{
+                    margin-bottom:40px;
+                }
+                img{
+                    width:31px;
+                    height:auto;
+                }
+            }
                 .blog-full{
                     @media (max-width: ${variable.tabletWidth}) {
                         img{
@@ -141,6 +175,17 @@ export const BlogPostTemplate = ({
                     }
                 }
                 body.dark{
+                    .white-dog{
+                        display:inline;
+                    }
+                    .dog{
+                        display:none;
+                    }
+                    .social-dog{
+                        i{
+                            border-color:white;
+                        }
+                    }
                     .blog-full{
                         h1{
                             color:white;
@@ -168,6 +213,16 @@ export const BlogPostTemplate = ({
                 <div className="blog-body">
                 {documentToReactComponents(body, options)}
                 </div>
+                </div>
+                <div className="social-dog">
+                    <div class="social">
+                    <a href="www.linkedin.com"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="www.twitter.com"><i class="fab fa-twitter"></i></a>
+                    </div>
+                    <div className="dogs">
+                    <img className="white-dog" src={whiteDog}/>
+                    <img className="dog" src={dog}/>
+                    </div>
                 </div>
             </Container>
         </Layout>
