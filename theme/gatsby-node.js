@@ -106,6 +106,7 @@ exports.onPreBootstrap = ({ store }, options) => {
             file.write('export const orange = "' + options.colors.orange + '"'+ '\n');
             file.write('export const red = "' + options.colors.red + '"'+ '\n');
             file.write('export const darkBlue = "' + options.colors.darkBlue + '"'+ '\n');
+            file.write('export const logodark = "' + options.logodark + '"'+ '\n');
             file.write('export const logo = "' + options.logo + '"');
 
         })

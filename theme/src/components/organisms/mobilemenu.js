@@ -5,7 +5,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import styled from "styled-components"
 import * as variable from 'figdog-theme/src/components/variables.js'
 import bg from 'figdog-theme/src/images/bg.png'
-import { ThemeToggler } from 'gatsby-plugin-dark-mode'
+import ThemeContext from 'figdog-theme/src/components/context/ThemeContext'
 
 
 const MobileContainer = styled.div`
@@ -16,6 +16,10 @@ const MobileContainer = styled.div`
   text-align:center;
       margin:0px;
       padding:0px;
+      .dark-mode{
+        display: flex !important;
+        justify-content: center;
+      }
       li{
           font-size:30px;
           font-weight:600;
@@ -87,6 +91,15 @@ const Mobilemenu = () => (
       {data.site.siteMetadata.footerMenuLinks.map((menuitem, index) =>(
         <li key={index}><Link to={menuitem.link}>{menuitem.name}</Link></li>
       ))}
+            <li className="dark-mode">
+      <ThemeContext.Consumer>
+            {theme => (
+          <button className="dark-switcher" onClick={theme.toggleDark}>
+              <span className="dark-title">DARK MODE</span><span className="dark-icon"></span>
+          </button>
+        )}
+           </ThemeContext.Consumer> 
+      </li>
     </Menu>
     </MobileContainer>
   </>

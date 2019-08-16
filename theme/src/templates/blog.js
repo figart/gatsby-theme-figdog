@@ -111,6 +111,9 @@ export const BlogPostTemplate = ({
         <Layout>
             <Global
             styles={css`
+            .blog-body{
+                margin-top:45px;
+            }
             .white-dog{
                 display:none;
             }
@@ -153,7 +156,10 @@ export const BlogPostTemplate = ({
                     h1{
                         color:${variable.primaryColor};
                         font-size:52px;
-                        margin:75px 0px 0px 0px;
+                        margin:65px 0px 0px 0px;
+                        @media (max-width: ${variable.tabletWidth}) {
+                            margin:0px 0px 0px 0px;
+                        }
                     }
                     .blog-post-date{
                         color:${variable.orange};
@@ -174,7 +180,7 @@ export const BlogPostTemplate = ({
                         line-height:1.3;
                     }
                 }
-                body.dark{
+                .dark{
                     .white-dog{
                         display:inline;
                     }

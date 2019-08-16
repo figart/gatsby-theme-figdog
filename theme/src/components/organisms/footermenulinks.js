@@ -4,40 +4,45 @@ import { StaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Container from 'figdog-theme/src/components/container'
 import * as variable from 'figdog-theme/src/components/variables.js'
-import { ThemeToggler } from 'gatsby-plugin-dark-mode'
+import ThemeContext from 'figdog-theme/src/components/context/ThemeContext'
 
 
 const Nav = styled.nav`
     width:100%;
     color:white;
-    input[type="checkbox"], .checked {
-        display: none;
-    }
-    input[type="checkbox"]:checked ~ .checked{
-        display:flex;
-        &:after{
-            content:"ON";
-        }
-    }
-    input[type="checkbox"]:checked ~ .unchecked
-    {
-        display: none;
-    }
-    label{
-        display:flex;
-    }
-    i{
-        color:#3169AC;
-        font-size:32px;
-        margin-left:20px;
-        display:flex;
+    button{
+        cursor:pointer;
+        font-weight:600;
+        display: flex;
         align-items: center;
-        &:after{
-            content:"OFF";
+        justify-content:space-between;
+        -webkit-appearance: none;
+        border:0px;
+        background-color:transparent;
+        color:white;
+        &:focus{
+            outline:0px;
+        }
+        span{
             color:white;
+            display: flex;
+            align-items: center;
+            justify-content:space-between;
+            font-family: 'Poppins', sans-serif;
             font-size:18px;
             margin-left:10px;
+            font-weight:600;
+            span{
+                color:#498F27;
+            }
         }
+    }
+    color:white;
+    i{
+        cursor:pointer;
+        color:#3169AC;
+        font-size:32px;
+        margin-left:15px;
     }
     img{
         width:136px;
@@ -69,6 +74,9 @@ const Nav = styled.nav`
             }
         }
     }
+    @media (max-width: ${variable.tabletWidth}) {
+        display:none !important;
+    }
 `
 
 const FooterMenuLinks = ({footerMenuLinks}) => {
@@ -80,7 +88,15 @@ const FooterMenuLinks = ({footerMenuLinks}) => {
           {footerMenuLinks.map((menuitem, index) =>(
             <li key={index}><a href={menuitem.link}>{menuitem.name}{menuitem.icon != null && <i class={menuitem.icon}></i>}</a></li>
           ))}
-
+      <li className="dark-mode">
+      <ThemeContext.Consumer>
+            {theme => (
+          <button className="dark-switcher" onClick={theme.toggleDark}>
+          <span className="dark-title">DARK MODE</span><span className="dark-icon"></span>
+      </button>
+        )}
+           </ThemeContext.Consumer> 
+      </li>
         </ul>
         </Container>
         </Nav>

@@ -6,6 +6,7 @@ import Footer from 'figdog-theme/src/components/regions/footer'
 import styled from "styled-components"
 import { Global, css } from "@emotion/core"
 import * as variable from 'figdog-theme/src/components/variables.js'
+import ThemeContext from 'figdog-theme/src/components/context/ThemeContext'
 
 const GlobalStyles = styled.div`
 
@@ -47,9 +48,26 @@ const Layout = ({ children }) => (
     render={data => (
         
       <>
-      <GlobalStyles>
+      <ThemeContext.Consumer>
+        
+        {theme => (
+          
+      <GlobalStyles className={theme.dark ? 'dark' : 'light'}>
+        {console.log(theme)}
         <Global
             styles={css`
+            .dark {
+              transition: all 0.6s ease;
+            }
+            .light {
+              transition: all 0.6s ease;
+            }
+            .main{
+              padding-top:55px;
+              @media (max-width: ${variable.tabletWidth}) {
+                padding-top:35px;
+              }
+            }
               @media (max-width: ${variable.tabletWidth}) {
                 body{
                   border-top:8px solid ${variable.orange};
@@ -74,6 +92,10 @@ const Layout = ({ children }) => (
                     line-height: 1.2;
                     p{
                       line-height: 1.6;
+                      margin:40px 0px;
+                      @media (max-width: ${variable.tabletWidth}) {
+                        margin:25px 0px;
+                      }
                     }
                     img{
                       max-width:100%;
@@ -82,7 +104,7 @@ const Layout = ({ children }) => (
                       color:${variable.primaryColor};
                     }
                 }
-                body.dark{
+                .dark{
                   color:white;
                   background-color:${variable.darkBlue};
                   a{
@@ -103,6 +125,9 @@ const Layout = ({ children }) => (
         ></Footer>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
         </GlobalStyles>
+        )}
+        </ThemeContext.Consumer>
+              
       </>
     )}
   />

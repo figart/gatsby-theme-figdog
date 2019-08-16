@@ -5,7 +5,9 @@ import styled from 'styled-components'
 import Container from 'figdog-theme/src/components/container'
 import MobileMenu from 'figdog-theme/src/components/organisms/mobilemenu'
 import * as variable from 'figdog-theme/src/components/variables.js'
-import { ThemeToggler } from 'gatsby-plugin-dark-mode'
+import { Global, css } from "@emotion/core"
+import ThemeContext from 'figdog-theme/src/components/context/ThemeContext'
+
 
 const Nav = styled.nav`
     .mobile-menu-list{
@@ -20,50 +22,39 @@ const Nav = styled.nav`
         }
     }
     width:100%;
-    input[type="checkbox"]{
+    button{
         cursor:pointer;
         font-weight:600;
-    }
-    input[type="checkbox"], .checked {
-        display: none;
-    }
-    input[type="checkbox"]:checked ~ .checked{
-        display:flex;
-        &:after{
-            content:"OFF";
-            font-weight:600;
-            color:white;
-            font-size:18px;
-        }
-    }
-    input[type="checkbox"]:checked ~ .unchecked
-    {
-        display: none;
-    }
-    label{
-        display:flex;
-        font-weight:600;
+        display: flex;
+        align-items: center;
         justify-content:space-between;
-        align-items:center;
-        font-size:18px;
+        -webkit-appearance: none;
+        border:0px;
+        background-color:transparent;
+        color:white;
+        &:focus{
+            outline:0px;
+        }
+        span{
+            color:white;
+            display: flex;
+            align-items: center;
+            justify-content:space-between;
+            font-family: 'Poppins', sans-serif;
+            font-size:18px;
+            margin-left:10px;
+            font-weight:600;
+            span{
+                color:#498F27;
+            }
+        }
     }
     color:white;
     i{
         cursor:pointer;
         color:#3169AC;
         font-size:32px;
-        margin-left:20px;
-        display:flex;
-        justify-content:space-between;
-        align-items: center;
-        width: 85px;
-        &:after{
-            content:"ON";
-            color:#498F27;
-            font-size:18px;
-            margin-left:10px;
-            font-weight:600;
-        }
+        margin-left:15px;
     }
     img{
         width:135px;
@@ -95,32 +86,88 @@ const Nav = styled.nav`
             }
         }
     }
+
 `
 
 const TopMenuLinks = ({topMenuLinks}) => {
 
     return(
-        <Nav>
+
+        <Nav className="top-menu">
+            <Global
+                styles={css`
+                .top-menu{
+                    .logodark{
+                        display:none;
+                    }
+                }
+                .dark-switcher{
+                    .dark-title:after{
+                        content:'\f204';
+                        font-family: "Font Awesome 5 Free";
+                        font-size:32px;
+                        margin-left:15px;
+                    }
+                    .dark-icon:after{
+                        content:'OFF';
+                        color:#498F27;
+                    }
+                }
+                .dark{
+                    .dark-icon:after{
+                        content:'ON';
+                        color:#498F27;
+                    }
+                    .dark-switcher{
+                        span{
+                            color:#3169AC;
+                            span{
+                                color:#498F27;
+                            }
+                        }
+                    }
+                }
+                @media (max-width: ${variable.tabletWidth}) {
+                    .top-menu{
+                        .logodark{
+                            display:block;
+                        }
+                        .logowhite{
+                            display:none;
+                        }
+                    }
+                    .dark{
+                        .top-menu{
+                            .logodark{
+                                display:none;
+                            }
+                            .logowhite{
+                                display:block;
+                            }
+                        }
+                    }
+                }
+                `}
+            />
         <ul>
-            <li><Link to="/"><img src={variable.logo}/></Link></li>
+            <li className="logo logowhite"><Link to="/"><img src={variable.logo}/></Link></li>
+            <li className="logo logodark"><Link to="/"><img src={variable.logodark}/></Link></li>
           {/* {topMenuLinks.map((menuitem, index) =>(
             <li key={index}><a href={menuitem.link}>{menuitem.name}{menuitem.icon != null && <i class={menuitem.icon}></i>}</a></li>
           ))} */}
-          <li className="dark-mode">
-          <ThemeToggler>
-        {({ theme, toggleTheme }) => (
-          <label>
-            <input
-              type="checkbox"
-              onChange={e => toggleTheme(e.target.checked ? 'light' : 'dark')}
-              checked={theme === 'light'}
-            />{' '}
-            DARK MODE
-            <i class="fas fa-toggle-on unchecked"></i>
-            <i class="fas fa-toggle-off checked"></i>
-          </label>
+          {/* <li className="dark-mode">
+          <button className="dark-switcher" onClick={theme.toggleDark}>
+            {theme.dark ? <span>Light mode ☀</span> : <span>Dark mode ☾</span>}
+          </button>
+      </li> */}
+      <li className="dark-mode">
+      <ThemeContext.Consumer>
+            {theme => (
+          <button className="dark-switcher" onClick={theme.toggleDark}>
+              <span className="dark-title">DARK MODE</span><span className="dark-icon"></span>
+          </button>
         )}
-      </ThemeToggler>
+           </ThemeContext.Consumer> 
       </li>
       <li className="mobile-menu-list">
       <MobileMenu className="mobile-menu"></MobileMenu>
@@ -128,6 +175,7 @@ const TopMenuLinks = ({topMenuLinks}) => {
         </ul>
         
         </Nav>
+        
     )
 
 }

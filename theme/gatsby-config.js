@@ -6,6 +6,7 @@ module.exports = options => ({
         siteTitle: options.siteTitle || `Figdog Theme`,
         siteSlogan: options.siteSlogan || `Our fancy slogan to capture views`,
         logo: options.logo || `/src/images/Logo-White.png`,
+        logodark: options.logo || `/src/images/Logo-Dark.png`,
         colors: options.colors || { primary: "#f03838", darkGray: "#303030", darkDarkGray: "#303030", lightGray: "#aeadad",cream: "#061836",gold: "#EBBA7D",orange: "DE6936",red: "#BF0F0F",darkBlue: "#061836"},
         breakpoints: options.breakpoints || {mobileWidth: `800px`, tabletWidth: `1100px`, desktopWidth: `1268px`},
         topMenuLinks: options.topMenuLinks || [
@@ -76,7 +77,6 @@ module.exports = options => ({
         },
         `gatsby-plugin-styled-components`,
         `gatsby-plugin-emotion`,
-        `gatsby-plugin-dark-mode`,
         {
             resolve: `gatsby-plugin-compile-es6-packages`,
             options: {

@@ -7,7 +7,7 @@ import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 const BlogTeaserContainer = styled.div`
-    margin: 40px 0px;
+    margin: 0px 0px 45px 0px;
     position: relative;
 
 `
@@ -62,13 +62,19 @@ return(
                         display:block;
                         font-size:20px;
                         text-decoration:none;
+                        margin-bottom:10px;
                     }
                     .blog-teaser-date{
                         color:${variable.orange};
                         font-size:16px;
                     }
+                    .blog-teaser-body{
+                      p{
+                        margin:20px 0px;
+                      }
+                    }
                 }
-                body.dark{
+                .dark{
                     color:${variable.lightGray};
                     .blog-teaser{
                         color:${variable.lightGray};

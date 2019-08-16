@@ -5,6 +5,7 @@ import * as variable from 'figdog-theme/src/components/variables'
 import FooterMenuLinks from 'figdog-theme/src/components/organisms/footermenulinks'
 import { Link } from 'gatsby'
 import bg from 'figdog-theme/src/images/bg.png'
+import { Global, css } from "@emotion/core"
 
 const FooterStyle = styled.footer`
     background-image:url(${bg});
@@ -32,6 +33,9 @@ const FooterStyle = styled.footer`
         margin-top:40px;
         font-size:14px;
     }
+    @media (max-width: ${variable.tabletWidth}) {
+        background-image:none;
+    }
 
 `;
 
@@ -42,6 +46,21 @@ export const Footer = ({
   }) => {
     return (
     <FooterStyle>
+        <Global
+                styles={css`
+                @media (max-width: ${variable.tabletWidth}) {
+                    .footer-copy{
+                        margin-top:0px;
+                        color:${variable.primaryColor};
+                    }
+                    .dark{
+                        .footer-copy{
+                            color:${variable.lightGray};
+                        }
+                    }
+                }
+                `}
+            />
         <Container className="footer-container">
             <FooterMenuLinks
             footerMenuLinks={footerMenuLinks}
