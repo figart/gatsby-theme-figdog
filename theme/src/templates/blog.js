@@ -106,6 +106,7 @@ export const BlogPostTemplate = ({
     subTitle,
     name,
     linkedIn,
+    blogDate,
   }) => {
     return (
         <Layout>
@@ -246,7 +247,7 @@ const Blog = ({ data }) => {
           title={post.title}
           subTitle={post.subTitle}
           body={post.body.json}
-          createdAt={post.createdAt}
+          blogDate={post.blogDate}
           name={post.author.name}
           linkedIn={post.author.linkedInLink}
         />
