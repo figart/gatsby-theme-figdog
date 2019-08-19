@@ -94,7 +94,7 @@ return(
         <Link className="blog-teaser-link-title" to={post.fields.slug}>
             {post.title}
         </Link>
-            <div className="blog-teaser-date">{post.createdAt}</div>
+            <div className="blog-teaser-date">{post.blogDate}</div>
            {post.teaser && <div className="blog-teaser-body">{documentToReactComponents(post.teaser.json, options) }</div>}
         
     

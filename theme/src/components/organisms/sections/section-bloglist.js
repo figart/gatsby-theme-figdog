@@ -21,8 +21,8 @@ export const BlogList = () => (
                 fields{
                     slug
                 }
-                createdAt(formatString: "ddd, MMM M, Y")
                 title
+                blogDate(formatString: "ddd, MMM M, Y")
                 teaser{
                   json
                 }
