@@ -90,7 +90,23 @@ module.exports = options => ({
                 `Poppins\:300,400,400i,600,700` // you can also specify font weights and styles
               ],
             }
-          }
+          },
+          {
+            resolve: "gatsby-plugin-google-tagmanager",
+            options: {
+              id: "GTM-5973DMQ",
+        
+              // Include GTM in development.
+              // Defaults to false meaning GTM will only be loaded in production.
+              includeInDevelopment: false,
+        
+              // datalayer to be set before GTM is loaded
+              // should be an object or a function that is executed in the browser
+              // Defaults to null
+              defaultDataLayer: { platform: "gatsby" },
+      
+            },
+          },
     ]
 })
 

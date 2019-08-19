@@ -111,6 +111,7 @@ const TopMenuLinks = ({topMenuLinks}) => {
                     .dark-icon:after{
                         content:'OFF';
                         color:#498F27;
+                        width: 35px;
                     }
                 }
                 .dark{
@@ -119,6 +120,9 @@ const TopMenuLinks = ({topMenuLinks}) => {
                         color:#498F27;
                     }
                     .dark-switcher{
+                        .dark-title:after{
+                            content:'\f205';
+                        }
                         span{
                             color:#3169AC;
                             span{

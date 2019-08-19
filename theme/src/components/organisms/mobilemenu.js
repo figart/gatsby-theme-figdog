@@ -59,6 +59,7 @@ const MobileContainer = styled.div`
   }
   .bm-burger-bars {
     background: ${variable.lightGray};
+    border-radius: 10px;
   }
 
 
