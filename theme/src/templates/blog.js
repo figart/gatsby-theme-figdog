@@ -91,7 +91,7 @@ export const query = graphql`
                   }
                 title
                 subTitle
-                createdAt(formatString: "ddd, MMM M, Y")
+                blogDate(formatString: "ddd, MMM M, Y")
             }
         }
 
@@ -214,7 +214,7 @@ export const BlogPostTemplate = ({
                 <div className="blog-full">
  
                     <h1>{title}</h1>
-                    <div className="blog-post-date">by <a target="_blank" href={linkedIn}>{name}</a> | {createdAt} </div>
+                    <div className="blog-post-date">by <a target="_blank" href={linkedIn}>{name}</a> | {blogDate} </div>
 
                 <div className="blog-body">
                 {documentToReactComponents(body, options)}
