@@ -107,17 +107,18 @@ const TopMenuLinks = ({topMenuLinks}) => {
                         font-family: "Font Awesome 5 Free";
                         font-size:32px;
                         margin-left:15px;
+                        color:#3169AC;
                     }
                     .dark-icon:after{
                         content:'OFF';
-                        color:#498F27;
+                        color:white;
                         width: 35px;
                     }
                 }
                 .dark{
                     .dark-icon:after{
                         content:'ON';
-                        color:#3169AC;
+                        color:#498F27;
                     }
                     .dark-switcher{
                         .dark-title:after{
@@ -126,7 +127,7 @@ const TopMenuLinks = ({topMenuLinks}) => {
                         span{
                             color:#3169AC;
                             span{
-                                color:#498F27;
+                                color:#3169AC;
                             }
                         }
                     }
