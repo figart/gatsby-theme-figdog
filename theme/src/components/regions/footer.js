@@ -14,6 +14,10 @@ const FooterStyle = styled.footer`
     margin-top: 95px;
     padding:50px 0px;
     color:white;
+    @media (max-width: ${variable.tabletWidth}) {
+        margin-top:0px;
+        padding:20px 0px;
+    }
     .footer-container nav{
         text-align:center;
         display:flex;
@@ -32,6 +36,9 @@ const FooterStyle = styled.footer`
         text-align:center;
         margin-top:40px;
         font-size:14px;
+        @media (max-width: ${variable.tabletWidth}) {
+            margin-top:0px;
+        }
     }
     @media (max-width: ${variable.tabletWidth}) {
         background-image:none;

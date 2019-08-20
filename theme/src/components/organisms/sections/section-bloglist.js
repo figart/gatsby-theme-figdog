@@ -15,7 +15,14 @@ export const BlogList = () => (
   <StaticQuery
     query={graphql`
         query EntityQyery {
-            blogs: allContentfulBlog(filter: {node_locale: {eq: "en-US"}}) {
+            blogs: allContentfulBlog(
+              filter: {node_locale: {eq: "en-US"}}
+              sort: {
+                fields: blogDate
+                order: DESC
+              }
+              ) 
+              {
                 nodes {
                     id
                 fields{
@@ -23,7 +30,7 @@ export const BlogList = () => (
                 }
                 author{
                   name
-                  id
+                  id  
                 }
                 title
                 blogDate(formatString: "ddd, MMM D, Y")
