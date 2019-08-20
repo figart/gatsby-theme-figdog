@@ -148,8 +148,10 @@ export const PagePostTemplate = ({
                     
                     <Helmet>
                     <script src="https://digett.activehosted.com/f/embed.php?id=9" type="text/javascript" charset="utf-8"></script>
+                    <script src="https://digett.activehosted.com/f/embed.php?id=7" type="text/javascript" charset="utf-8"></script>
                     </Helmet>
                     <Form>
+                    <div class="_form_7"></div>
                     <div class="_form_9"></div>
                     </Form>
                 </div>

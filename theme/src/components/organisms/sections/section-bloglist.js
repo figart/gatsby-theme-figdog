@@ -22,7 +22,7 @@ export const BlogList = () => (
                     slug
                 }
                 title
-                blogDate(formatString: "ddd, MMM M, Y")
+                blogDate(formatString: "ddd, MMM D, Y")
                 teaser{
                   json
                 }
@@ -36,10 +36,12 @@ export const BlogList = () => (
     <>
     <BlogListStyle className="blog-list-container">
     {data.blogs.nodes.map((post, index) => (
+      
       <BlogTeaser
+      
       key={index}
       post={post}
-      >
+      >{console.log(post)}
       </BlogTeaser>
     ))}
     </BlogListStyle>

@@ -91,7 +91,7 @@ export const query = graphql`
                   }
                 title
                 subTitle
-                blogDate(formatString: "ddd, MMM M, Y")
+                blogDate(formatString: "ddd, MMM D, Y")
             }
         }
 
