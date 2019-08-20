@@ -8,6 +8,8 @@ import styled from 'styled-components'
 import Container from '../components/container'
 import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+import { Helmet } from "react-helmet"
+import { Global, css } from "@emotion/core"
 
 const Body = styled.div`
     img{
@@ -121,15 +123,36 @@ export const PagePostTemplate = ({
   }) => {
     return (
         <Layout>
+            <Global
+                styles={css`
+                    body #_form_5D5C01CEAB2D4_{
+                        padding:0px !important;
+                        margin:0px !important;
+                        color:${variable.darkGray} !important;
+                        width:100% !important;
+                        font-family: 'Poppins',sans-serif !important;
+                        button._submit{
+                            background-color:${variable.primaryColor} !important;
+                            font-family: 'Poppins',sans-serif !important;
+                        }
+                    }
+                `}
+            />
             <Container>   
                 <Body>
                 {documentToReactComponents(body, options)}
                 </Body>
                 {homePage === true && <BlogSection></BlogSection>}
                 {slug === '/engage' &&
-                <Form>
-                    <div class="_form_9"></div><script src="https://digett.activehosted.com/f/embed.php?id=9" type="text/javascript" charset="utf-8"></script>
-                </Form>
+                <div>
+                    
+                    <Helmet>
+                    <script src="https://digett.activehosted.com/f/embed.php?id=9" type="text/javascript" charset="utf-8"></script>
+                    </Helmet>
+                    <Form>
+                    <div class="_form_9"></div>
+                    </Form>
+                </div>
                 }
             </Container>
         </Layout>

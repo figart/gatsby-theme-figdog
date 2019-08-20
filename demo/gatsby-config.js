@@ -5,6 +5,9 @@ module.exports={
             options: {
                 siteTitle: 'Figdog',
                 siteSlogan: 'PERSPECTIVES ON MARKETING AND MANAGED IT SERVICES',
+                title: `Figdog RSS Feed`,
+                description: `Our fancy slogan to capture views`,
+                siteUrl: `https://figdog.com`,
                 logo:'/images/Logo-White.png',
                 logodark: `/images/Logo-Dark.png`,
                 topMenuLinks:[

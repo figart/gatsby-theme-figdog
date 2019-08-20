@@ -1,9 +1,15 @@
 require('dotenv').config()
+const fs = require('fs')
+const mkdirp = require('mkdirp')
+const path = require('path')
 
 module.exports = options => ({
     siteMetadata: {
         blogPath: options.blogPath || `/blog`,
         siteTitle: options.siteTitle || `Figdog Theme`,
+        title: options.title || `Figdog Theme RSS Feed`,
+        description: options.description || `Our fancy slogan to capture views`,
+        siteUrl: options.siteUrl || `https://figdog.com`,
         siteSlogan: options.siteSlogan || `Our fancy slogan to capture views`,
         logo: options.logo || `/src/images/Logo-White.png`,
         logodark: options.logo || `/src/images/Logo-Dark.png`,
@@ -68,6 +74,7 @@ module.exports = options => ({
         ],
     },
     plugins: [
+      `@contentful/gatsby-transformer-contentful-richtext`,
         {
             resolve: "gatsby-source-contentful",
             options: {
@@ -91,10 +98,83 @@ module.exports = options => ({
               ],
             }
           },
+          `gatsby-plugin-react-helmet`,
           {
             resolve: "gatsby-plugin-google-tagmanager",
             options: {
               id: "GTM-5973DMQ",
+            },
+          },
+          {
+            resolve: `gatsby-plugin-feed`,
+            options: {
+              query: `
+                {
+                  site {
+                    siteMetadata {
+                      title
+                      description
+                      siteUrl
+                      site_url: siteUrl
+                    }
+                  }
+                }
+              `,
+              feeds: [
+                {
+                  serialize: ({ query: { site, allContentfulBlog } }) => {
+                    return allContentfulBlog.edges.map(edge => {
+                      return Object.assign({}, edge.node, {
+                        description: edge.node.childContentfulBlogTeaserRichTextNode.childContentfulRichText.html,
+                        date: edge.node.blogDate,
+                        url: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                        guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                        custom_elements: [{ "content:encoded": edge.node.childContentfulBlogBodyRichTextNode.childContentfulRichText.html }],
+                      })
+                    })
+                  },
+                  query: `
+                    {
+                      allContentfulBlog(
+                        sort: {order: DESC, fields: [blogDate]}
+                      ) {
+                           edges {
+                              node {
+                                blogDate
+                                title
+                                teaser {
+                                  json
+                                }
+                                fields {
+                                  slug
+                                }
+                                body {
+                                  json
+                                }
+                                childContentfulBlogTeaserRichTextNode {
+                                  childContentfulRichText {
+                                    html
+                                  }
+                                }
+                                childContentfulBlogBodyRichTextNode {
+                                  childContentfulRichText {
+                                    html
+                                  }
+                                }
+                              }
+                        }
+                      }
+                    }
+                  `,
+                  output: "/rss.xml",
+                  title: "Your Site's RSS Feed",
+                  // optional configuration to insert feed reference in pages:
+                  // if `string` is used, it will be used to create RegExp and then test if pathname of
+                  // current page satisfied this regular expression;
+                  // if not provided or `undefined`, all pages will have feed reference inserted
+                  match: "^/blog/",
+                },
+              ],
             },
           },
     ]

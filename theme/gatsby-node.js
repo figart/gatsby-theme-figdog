@@ -20,6 +20,7 @@ exports.createPages = async ( { actions, graphql, reporter }, options) => {
                     id
                   fields{
                       slug
+                      blogDate
                   }
                 }
             }
@@ -70,6 +71,11 @@ exports.onCreateNode = ({node, actions}, options) => {
             node,
             name: `slug`,
             value: slug
+        })
+        actions.createNodeField({
+            node,
+            name: `blogDate`,
+            value: node.blogDate
         })
     }
 }
