@@ -107,7 +107,9 @@ export const BlogPostTemplate = ({
     name,
     linkedIn,
     blogDate,
+    slug,
   }) => {
+      const linkedInUrl = 'https://www.linkedin.com/shareArticle/?mini=true&url=https://figdog.com' + slug
     return (
         <Layout>
             <Global
@@ -215,7 +217,7 @@ export const BlogPostTemplate = ({
                 <div className="blog-full">
  
                     <h1>{title}</h1>
-                    <div className="blog-post-date">by <a target="_blank" href={linkedIn}>{name}</a> | {blogDate} </div>
+                    <div className="blog-post-date">by {name} | {blogDate} </div>
 
                 <div className="blog-body">
                 {documentToReactComponents(body, options)}
@@ -223,8 +225,8 @@ export const BlogPostTemplate = ({
                 </div>
                 <div className="social-dog">
                     <div class="social">
-                    <a href="www.linkedin.com"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="www.twitter.com"><i class="fab fa-twitter"></i></a>
+                    <a href={linkedInUrl}><i class="fab fa-linkedin-in"></i></a>
+                    <a target="_blank" href="https://twitter.com/intent/tweet"><i class="fab fa-twitter"></i></a>
                     </div>
                     <div className="dogs">
                     <img className="white-dog" src={whiteDog}/>
@@ -250,6 +252,7 @@ const Blog = ({ data }) => {
           blogDate={post.blogDate}
           name={post.author.name}
           linkedIn={post.author.linkedInLink}
+          slug={post.fields.slug}
         />
     )
 

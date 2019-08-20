@@ -21,6 +21,10 @@ export const BlogList = () => (
                 fields{
                     slug
                 }
+                author{
+                  name
+                  id
+                }
                 title
                 blogDate(formatString: "ddd, MMM D, Y")
                 teaser{

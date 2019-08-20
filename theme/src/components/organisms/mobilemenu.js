@@ -42,7 +42,7 @@ const MobileContainer = styled.div`
   .bm-menu {
     background-image:url(${bg});
     background-position: center;
-    background-size: auto;
+    background-size: 750px;
     font-size: 1.15em;
     padding: 2.5em 1.5em 0;
   }
