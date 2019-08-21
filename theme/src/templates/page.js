@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import PropTypes from 'prop-types'
 import Layout from '../components/layout'
 import BlogSection from '../components/organisms/sections/section-bloglist'
@@ -10,6 +10,8 @@ import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { Helmet } from "react-helmet"
 import { Global, css } from "@emotion/core"
+import Subscribe from '../components/organisms/subscribe'
+import ActiveContact from '../components/organisms/active-contact'
 
 const Body = styled.div`
     img{
@@ -17,6 +19,9 @@ const Body = styled.div`
         max-width:350px;
         margin-left:20px;
         margin-bottom:20px;
+    }
+    h2{
+        font-size:52px;
     }
 `
 
@@ -120,12 +125,121 @@ export const PagePostTemplate = ({
     subTitle,
     slug,
     body,
+    
   }) => {
     return (
         <Layout>
             <Global
                 styles={css`
-                    body #_form_5D5C01CEAB2D4_{
+                .g-recaptcha > div{
+                    @media (max-width: ${variable.tabletWidth}) {
+                        width:100% !important;
+                        iframe{
+                            width:100% important;
+                            max-width:100%;
+                        }
+                    }
+                }
+                .social-header{
+                    margin-top:40px;
+                }
+                .social{
+                    display:flex;
+                    justify-content:flex-start;
+                }
+                a{
+                    border:0px;
+                    text-decoration:none;
+                }
+                i{
+                    border:5px solid ${variable.darkGray};
+                    width:65px;
+                    height:65px;
+                    border-radius:100%;
+                    margin-right:13px;
+                    display:flex !important;
+                    align-items:center;
+                    justify-content:center;
+                    font-size:34px;
+                    color:${variable.darkGray};
+                }
+                body ._form_7{
+                    margin-top:20px !important;
+                    ._form-title{
+                        color:${variable.darkGray} !important;
+                    }
+                    ._button-wrapper{
+                        width:calc(30% - 15px)!important;
+                        margin:0px 0px 0px 15px !important;
+                        @media (max-width: ${variable.tabletWidth}) {
+                            width:calc(100%)!important;
+                            margin:15px 0px 0px 0px !important;
+                        }
+                        button#_form_7_submit._submit{
+                            width:100% !important;
+                            border:2px solid ${variable.darkGray} !important;
+                            background:transparent !important;
+                            color:${variable.darkGray} !important;
+                            border-radius:25px !important;
+                            height:50px !important;
+                            font-size: 24px;
+                            padding: 0px !important;
+                            font-weight:400 !important;
+                        }
+                    }
+                    ._form-label{
+                        display:none !important;
+                    }
+                    ._x35763815{
+                        margin-bottom:0px !important;
+                        width:65%;
+                        @media (max-width: ${variable.tabletWidth}) {
+                            width:calc(100%)!important;
+                        }
+                        input{
+                            margin-bottom:0px;
+                            border:2px solid ${variable.darkGray} !important;
+                            border-radius: 25px;
+                            
+                        }
+                    }
+                   ._field-wrapper {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        &:before{
+                            content:'\f0e0';
+                            font-family: "Font Awesome 5 Free";
+                            color:${variable.darkGray};
+                            position: absolute;
+                            left: 15px;
+                            font-size:30px;
+                        }
+                        &:focus-within{
+                            &:before{
+                                // display:none;
+                            }
+                        }
+                    }
+                    input[type="text"]{
+                        width:100% !important;
+                        padding:15px 15px 15px 55px !important;
+                        border-radius:25px !important;
+                        height:50px !important;
+                    }
+                }
+                .fa-rss{
+                    font-size:40px;
+                    color:${variable.darkGray};
+                    border:5px solid ${variable.darkGray};
+                    border-radius:100%;
+                    width: 65px;
+                    height: 65px;
+                    display: flex !important;
+                    justify-content: center;
+                    align-items: center;
+                }
+                    ._form{
                         padding:0px !important;
                         margin:0px !important;
                         color:${variable.darkGray} !important;
@@ -134,6 +248,70 @@ export const PagePostTemplate = ({
                         button._submit{
                             background-color:${variable.primaryColor} !important;
                             font-family: 'Poppins',sans-serif !important;
+                        }
+                    }
+                        ._form_9{
+                        margin-top:50px;
+                        button#_form_9_submit{
+                            background: transparent !important;
+                            color:${variable.darkGray} !important;
+                            border:2px solid ${variable.darkGray} !important;
+                            font-weight:400 !important;
+                        }
+                        ._form-content{
+                            color:${variable.darkGray} !important;
+                            input[type="text"]{
+                                width:100% !important;
+                                padding:15px 15px 15px 15px !important;
+                                border-radius:25px !important;
+                                height:50px !important;
+                                color:${variable.darkGray} !important;
+                                border:2px solid ${variable.darkGray} !important;
+                                &::placeholder{
+                                    color:${variable.darkGray} !important;
+                                }
+                            }
+                            textarea{
+                                width:100% !important;
+                                padding:15px 15px 15px 15px !important;
+                                border-radius:25px !important;
+                                color:${variable.darkGray} !important;
+                                border:2px solid ${variable.darkGray} !important;
+                                &::placeholder{
+                                    color:${variable.darkGray} !important;
+                                }
+                            }
+                        }
+                    }
+                    .dark{
+                        ._form_9{
+                            button#_form_9_submit{
+                                color:white !important;
+                                border:2px solid white !important;
+                            }
+                        }
+                        i{
+                            border:5px solid white;
+                            color:white;
+                        }
+                        .fa-rss{
+                            color:white;
+                            border-color:white !important;
+                        }
+                        ._form_7{
+                            ._form-title{
+                                color:white !important;
+                            }
+                            ._button-wrapper{
+                                button#_form_7_submit._submit{
+                                    border:2px solid white !important;
+                                    color:white !important;
+                                }
+                            }
+
+                        }
+                        ._form_9 ._form-content{
+                            color:white !important;
                         }
                     }
                 `}
@@ -146,12 +324,20 @@ export const PagePostTemplate = ({
                 {slug === '/engage' &&
                 <div>
                     
+                    
                     <Helmet>
                     <script src="https://digett.activehosted.com/f/embed.php?id=9" type="text/javascript" charset="utf-8"></script>
                     <script src="https://digett.activehosted.com/f/embed.php?id=7" type="text/javascript" charset="utf-8"></script>
                     </Helmet>
+                    <h3>Get the RSS Feed</h3>
+                    <Link to="/rss.xml"><i class="fas fa-rss"></i></Link>
                     <Form>
                     <div class="_form_7"></div>
+                    <h3 className="social-header">Find me on Social Media</h3>
+                    <div class="social">
+                    <a target="_blank" href='https://www.linkedin.com/https://www.linkedin.com/in/figart'><i class="fab fa-linkedin-in"></i></a>
+                    <a target="_blank" href="https://twitter.com/figart?lang=en"><i class="fab fa-twitter"></i></a>
+                    </div>
                     <div class="_form_9"></div>
                     </Form>
                 </div>

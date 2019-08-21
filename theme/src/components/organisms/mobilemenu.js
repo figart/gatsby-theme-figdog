@@ -87,7 +87,7 @@ const Mobilemenu = () => (
       <MobileContainer>
     <a href="#" className="bm-burger-button .hamburger-box">
     </a>
-    <Menu right>
+    <Menu right noOverlay>
     <li><Link to="/"><img src={variable.logo}/></Link></li>
       {data.site.siteMetadata.footerMenuLinks.map((menuitem, index) =>(
         <li key={index}><Link to={menuitem.link}>{menuitem.name}</Link></li>
