@@ -60,10 +60,17 @@ const Layout = ({ children }) => (
         {console.log(theme)}
         <Global
             styles={css`
-            html{
+            body{
               background-image:url(${bg});
               background-position: center;
               background-size: 1150px;
+              @media (max-width: ${variable.tabletWidth}) {
+                background-image:none;
+                background-color:white;
+                &.dark{
+                  background-color:${variable.darkBlue};
+                }
+              }
             }
             .dark {
               transition: all 0.6s ease;
