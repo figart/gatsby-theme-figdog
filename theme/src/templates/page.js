@@ -12,6 +12,7 @@ import { Helmet } from "react-helmet"
 import { Global, css } from "@emotion/core"
 import Subscribe from '../components/organisms/subscribe'
 import ActiveContact from '../components/organisms/active-contact'
+import Script from 'react-load-script'
 
 const Body = styled.div`
     img{
@@ -323,14 +324,19 @@ export const PagePostTemplate = ({
                 {homePage === true && <BlogSection></BlogSection>}
                 {slug === '/engage' &&
                 <div>
-                    
-                    
-                    <Helmet>
+
+<Script
+      url="https://digett.activehosted.com/f/embed.php?id=9"
+    />
+               <Script
+      url="https://digett.activehosted.com/f/embed.php?id=7"
+    />     
+                    {/* <Helmet>
                     <script src="https://digett.activehosted.com/f/embed.php?id=9" type="text/javascript" charset="utf-8"></script>
                     <script src="https://digett.activehosted.com/f/embed.php?id=7" type="text/javascript" charset="utf-8"></script>
-                    </Helmet>
+                    </Helmet> */}
                     <h3>Get the RSS Feed</h3>
-                    <Link to="/rss.xml"><i class="fas fa-rss"></i></Link>
+                    <a href="/rss.xml"><i class="fas fa-rss"></i></a>
                     <Form>
                     <div class="_form_7"></div>
                     <h3 className="social-header">Find me on Social Media</h3>
