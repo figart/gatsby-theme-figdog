@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from "react"
 import { graphql } from "gatsby"
 import PropTypes from 'prop-types'
 import Layout from 'figdog-theme/src/components/layout'
@@ -89,6 +89,11 @@ export const query = graphql`
                 body {
                     json
                   }
+                  childContentfulBlogTeaserRichTextNode {
+                    childContentfulRichText {
+                      html
+                    }
+                  }
                 title
                 subTitle
                 blogDate(formatString: "ddd, MMM D, Y")
@@ -98,24 +103,42 @@ export const query = graphql`
     }
 
 `
+class BlogPostTemplate extends Component {
+    // title,
+    // body,
+    // createdAt,
+    // subTitle,
+    // name,
+    // linkedIn,
+    // blogDate,
+    // teaser,
+    // slug,
+//   }) => {
+//     var url = "http://google.com";
+//     var title2 = "Replace this with a title.";
+//     var text = "Replace this with your share copy.";
+//     const encodedLinkedIn = 'https://www.linkedin.com/shareArticle?mini=true&title=' + title + '&url=' + encodeURIComponent('https://figdog.com' + slug)
+//     // window.open('http://www.linkedin.com/shareArticle?mini=true&url='+encodeURIComponent(url), '', 'left=0,top=0,width=650,height=420,personalbar=0,toolbar=0,scrollbars=0,resizable=0');
+//       const linkedInUrl = 'https://www.linkedin.com/shareArticle?mini=true&title=' + title + '&url=https://figdog.com' + slug + '&summary=' + teaser
+//       const twitterShareUrl = 'https://twitter.com/share?text=' + title + '&url=' + 'http://figdog.com' + slug
+linkedInClick = (e, slug, title) => {
+    window.open('http://www.linkedin.com/shareArticle?mini=true&title=' + title + '&url='+encodeURIComponent('https://figdog2.netlify.com' + slug), '', 'left=0,top=0,width=650,height=420,personalbar=0,toolbar=0,scrollbars=0,resizable=0');
+    e.preventDefault()
+  };
+render(){
+    const {title, body, createdAt, subTitle, name, linkedIn, blogDate, teaser,slug} = this.props
+    const twitterShareUrl = 'https://twitter.com/share?text=' + title + '&url=' + 'http://figdog.com' + slug
+    const linkedInUrl = 'http://www.linkedin.com/shareArticle?mini=true&title=' + title + '&url='+encodeURIComponent('https://figdog2.netlify.com' + slug)
 
-export const BlogPostTemplate = ({
-    title,
-    body,
-    createdAt,
-    subTitle,
-    name,
-    linkedIn,
-    blogDate,
-    slug,
-  }) => {
-      const linkedInUrl = 'https://www.linkedin.com/shareArticle/?mini=true&url=https://figdog.com' + slug
     return (
         <Layout>
             <Global
             styles={css`
             .blog-body{
                 margin-top:45px;
+                a{
+                    cursor:pointer;
+                }
             }
             .white-dog{
                 display:none;
@@ -225,8 +248,8 @@ export const BlogPostTemplate = ({
                 </div>
                 <div className="social-dog">
                     <div class="social">
-                    <a href={linkedInUrl}><i class="fab fa-linkedin-in"></i></a>
-                    <a target="_blank" href="https://twitter.com/intent/tweet"><i class="fab fa-twitter"></i></a>
+                    <a target="_blank" href={linkedInUrl} onClick={(e) => {this.linkedInClick(e, slug, title)}}><i class="fab fa-linkedin-in"></i></a>
+                    <a target="_blank" href={twitterShareUrl}><i class="fab fa-twitter"></i></a>
                     </div>
                     <div className="dogs">
                     <img className="white-dog" src={whiteDog}/>
@@ -237,6 +260,7 @@ export const BlogPostTemplate = ({
         </Layout>
     )
   }
+}
 
 const Blog = ({ data }) => {
 
@@ -253,6 +277,7 @@ const Blog = ({ data }) => {
           name={post.author.name}
           linkedIn={post.author.linkedInLink}
           slug={post.fields.slug}
+          teaser={post.childContentfulBlogTeaserRichTextNode.childContentfulRichText.html}
         />
     )
 
