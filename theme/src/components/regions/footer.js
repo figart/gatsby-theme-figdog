@@ -8,10 +8,6 @@ import bg from 'figdog-theme/src/images/bg.png'
 import { Global, css } from "@emotion/core"
 
 const FooterStyle = styled.footer`
-    background-image:url(${bg});
-    background-position: center;
-    background-size: cover;
-    margin-top: 95px;
     padding:50px 0px;
     color:white;
     @media (max-width: ${variable.tabletWidth}) {
@@ -55,12 +51,19 @@ export const Footer = ({
     <FooterStyle>
         <Global
                 styles={css`
+
                 @media (max-width: ${variable.tabletWidth}) {
+                    footer{
+                        background-color:white;
+                    }
                     .footer-copy{
                         margin-top:0px;
                         color:${variable.primaryColor};
                     }
                     .dark{
+                        footer{
+                            background-color:${variable.darkBlue};
+                        }
                         .footer-copy{
                             color:${variable.lightGray};
                         }

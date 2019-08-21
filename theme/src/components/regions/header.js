@@ -26,13 +26,20 @@ export const Header = ({
               .fig-header{
                 background-image:url(${bg});
                 background-position: center;
-                background-size: cover;
+                background-size: 1150px;
                 display:flex;
                 justify-content:space-between;
                 align-items:center;
                 padding:34px 0px 15px 0px;
+                background-color:white;
                 @media (max-width: ${variable.tabletWidth}) {
                   background-image:none;
+                  
+                }
+              }
+              .dark{
+                .fig-header{
+                  background-color:${variable.darkBlue};
                 }
               }
             `}

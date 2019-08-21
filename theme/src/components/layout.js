@@ -7,6 +7,8 @@ import styled from "styled-components"
 import { Global, css } from "@emotion/core"
 import * as variable from 'figdog-theme/src/components/variables.js'
 import ThemeContext from 'figdog-theme/src/components/context/ThemeContext'
+import bg from 'figdog-theme/src/images/bg.png'
+import BodyClassName from 'react-body-classname';
 
 const GlobalStyles = styled.div`
 
@@ -52,10 +54,17 @@ const Layout = ({ children }) => (
         
         {theme => (
           
-      <GlobalStyles className={theme.dark ? 'dark' : 'light'}>
+      <GlobalStyles>
+        <BodyClassName className={theme.dark ? 'dark' : 'light'}></BodyClassName>
+
         {console.log(theme)}
         <Global
             styles={css`
+            html{
+              background-image:url(${bg});
+              background-position: center;
+              background-size: 1150px;
+            }
             .dark {
               transition: all 0.6s ease;
             }
@@ -90,6 +99,14 @@ const Layout = ({ children }) => (
                     font-family: 'Poppins', sans-serif;
                     font-size: 16px;
                     line-height: 1.2;
+                    .main{
+                        padding-bottom:95px;
+                        color:${variable.darkGray};
+                        background-color:white;
+                        @media (max-width: ${variable.tabletWidth}) {
+                          padding-bottom:20px;
+                        }
+                    }
                     p{
                       line-height: 1.6;
                       margin:40px 0px;
@@ -105,8 +122,10 @@ const Layout = ({ children }) => (
                     }
                 }
                 .dark{
-                  color:white;
-                  background-color:${variable.darkBlue};
+                  .main{
+                    color:white;
+                    background-color:${variable.darkBlue};
+                  }
                   a{
                     color:${variable.lightGray};
                   }
