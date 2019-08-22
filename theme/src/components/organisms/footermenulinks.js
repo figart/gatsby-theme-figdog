@@ -86,7 +86,7 @@ const FooterMenuLinks = ({footerMenuLinks}) => {
         <Container>
         <ul>
           {footerMenuLinks.map((menuitem, index) =>(
-            <li key={index}><a href={menuitem.link}>{menuitem.name}{menuitem.icon != null && <i class={menuitem.icon}></i>}</a></li>
+            <li key={index}><Link to={menuitem.link}>{menuitem.name}{menuitem.icon != null && <i class={menuitem.icon}></i>}</Link></li>
           ))}
       <li className="dark-mode">
       <ThemeContext.Consumer>
