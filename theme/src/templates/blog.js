@@ -31,7 +31,6 @@ const options = {
                 case 'imageWithTagline':
                     const { image, tagline } = node.data.target.fields
                     const { title, description, file } = image['en-US'].fields
-                    console.log(tagline)
                     return <div className="image-with-tagline">
                         <img
                         title={ title ? title['en-US'] : null}
@@ -185,6 +184,7 @@ render(){
                         margin:65px 0px 0px 0px;
                         @media (max-width: ${variable.tabletWidth}) {
                             margin:0px 0px 0px 0px;
+                            font-size:30px;
                         }
                     }
                     .blog-post-date{
@@ -198,7 +198,7 @@ render(){
                     }
                     .image-tagline{
                         color:${variable.orange};
-                        font-size:14px;
+                        font-size:20px;
                         font-style:italic;
                         text-align:center;
                         font-family: Georgia, Times, "Times New Roman";
@@ -265,8 +265,6 @@ render(){
 const Blog = ({ data }) => {
 
     const { [0]: post } = data.allContentfulBlog.nodes
-
-    console.log(post)
 
     return (
         <BlogPostTemplate

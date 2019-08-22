@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from "react"
 import { slide as Menu } from 'react-burger-menu'
 import { Link } from 'gatsby'
 import { StaticQuery, graphql } from 'gatsby'
@@ -65,8 +65,28 @@ const MobileContainer = styled.div`
 
 `;
 
-const Mobilemenu = () => (
+class Mobilemenu extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      menuOpen: false
+    }
+  }
 
+  handleStateChange (state) {
+    this.setState({menuOpen: state.isOpen})  
+  }
+
+  closeMenu () {
+    this.setState({menuOpen: false})
+  }
+
+  toggleMenu () {
+    this.setState(state => ({menuOpen: !state.menuOpen}))
+  }
+
+render(){
+  return(
   <StaticQuery
   query={graphql`
     query MobileMenuQuery {
@@ -87,10 +107,15 @@ const Mobilemenu = () => (
       <MobileContainer>
     <a href="#" className="bm-burger-button .hamburger-box">
     </a>
-    <Menu right noOverlay>
-    <li><Link to="/"><img src={variable.logo}/></Link></li>
+    <Menu 
+    right 
+    noOverlay
+    isOpen={this.state.menuOpen}
+    onStateChange={(state) => this.handleStateChange(state)}
+    >
+    <li><Link to="/" onClick={() => this.toggleMenu()}><img src={variable.logo}/></Link></li>
       {data.site.siteMetadata.footerMenuLinks.map((menuitem, index) =>(
-        <li key={index}><Link to={menuitem.link}>{menuitem.name}</Link></li>
+        <li key={index}><Link to={menuitem.link} onClick={() => this.toggleMenu()} >{menuitem.name}</Link></li>
       ))}
             <li className="dark-mode">
       <ThemeContext.Consumer>
@@ -107,6 +132,8 @@ const Mobilemenu = () => (
   )}
   />
 )
+}
+}
 
 
 export default Mobilemenu

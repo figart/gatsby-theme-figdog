@@ -52,7 +52,7 @@ export const BlogList = () => (
       
       key={index}
       post={post}
-      >{console.log(post)}
+      >
       </BlogTeaser>
     ))}
     </BlogListStyle>

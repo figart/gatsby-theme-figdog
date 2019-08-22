@@ -49,7 +49,7 @@ const options = {
   }
 
 const BlogTeaser = ({post}) => {
-    console.log(post)
+
 return(
     <BlogTeaserContainer className="blog-teaser">
             <Global
@@ -93,8 +93,6 @@ return(
             />
         <Link className="blog-teaser-link-title" to={post.fields.slug}>
             {post.title}
-            {console.log('test')}
-            {console.log(post)}
         </Link>
         <div className="blog-post-date">by {post.author.name} | {post.blogDate} </div>           {post.teaser && <div className="blog-teaser-body">{documentToReactComponents(post.teaser.json, options) }</div>}
         

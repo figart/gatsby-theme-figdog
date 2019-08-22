@@ -363,7 +363,6 @@ const Page = ({ data }) => {
         var body = '';
     }
 
-    console.log(post)
 
     return (
         <PagePostTemplate

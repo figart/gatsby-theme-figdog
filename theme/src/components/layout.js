@@ -56,8 +56,6 @@ const Layout = ({ children }) => (
           
       <GlobalStyles>
         <BodyClassName className={theme.dark ? 'dark' : 'light'}></BodyClassName>
-
-        {console.log(theme)}
         <Global
             styles={css`
             body{
@@ -104,7 +102,6 @@ const Layout = ({ children }) => (
                     margin:0px;
                     color:${variable.darkGray};
                     font-family: 'Poppins', sans-serif;
-                    font-size: 16px;
                     line-height: 1.2;
                     .main{
                         padding-bottom:95px;
@@ -113,10 +110,16 @@ const Layout = ({ children }) => (
                         @media (max-width: ${variable.tabletWidth}) {
                           padding-bottom:20px;
                         }
+                        li{
+                          p{
+                            margin:5px 0px;
+                          }
+                        }
                     }
                     p{
-                      line-height: 1.6;
+                      line-height: 35px;
                       margin:40px 0px;
+                      font-size:20px;
                       @media (max-width: ${variable.tabletWidth}) {
                         margin:25px 0px;
                       }
