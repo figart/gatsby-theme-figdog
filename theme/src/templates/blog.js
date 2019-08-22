@@ -35,7 +35,7 @@ const options = {
                         <img
                         title={ title ? title['en-US'] : null}
                         alt={description ?  description['en-US'] : null}
-                        src={file['en-US'].url}
+                        src={file['en-US'].url+'?w=572&q=90'}
                         />
                         <div className="image-tagline">{tagline['en-US']}</div>
                     </div>
