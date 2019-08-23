@@ -66,7 +66,7 @@ return(
                         color:${variable.primaryColor};
                         font-weight:bold;
                         display:block;
-                        font-size:20px;
+                        font-size:28px;
                         text-decoration:none;
                         margin-bottom:10px;
                     }
