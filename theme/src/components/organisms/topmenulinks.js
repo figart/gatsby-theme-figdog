@@ -96,7 +96,7 @@ const TopMenuLinks = ({footerMenuLinks}) => {
         <Nav className="top-menu">
             <Global
                 styles={css`
-                .main-links:last-child{
+                .main-links-container li:last-child{
                         margin-left:40px;
                 }
                 .top-menu{
@@ -136,7 +136,7 @@ const TopMenuLinks = ({footerMenuLinks}) => {
                     }
                 }
                 @media (max-width: ${variable.tabletWidth}) {
-                    .main-links{
+                    .main-links-container{
                         display:none !important;
                     }
                     .top-menu{
@@ -173,7 +173,7 @@ const TopMenuLinks = ({footerMenuLinks}) => {
       </li> */}
         <li className="main-links-container">
             {footerMenuLinks.map((menuitem, index) =>(
-            <li className="main-links" key={index}><Link to={menuitem.link}>{menuitem.name}{menuitem.icon != null && <i class={menuitem.icon}></i>}</Link></li>
+            <li key={index}><Link to={menuitem.link}>{menuitem.name}{menuitem.icon != null && <i class={menuitem.icon}></i>}</Link></li>
           ))}
           </li>
       <li className="mobile-menu-list">
