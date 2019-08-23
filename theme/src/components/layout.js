@@ -133,9 +133,6 @@ const Layout = ({ children }) => (
                         margin:25px 0px;
                       }
                     }
-                    img{
-                      max-width:100%;
-                    }
                     a{
                       color:${variable.primaryColor};
                     }

@@ -15,15 +15,7 @@ import ActiveContact from '../components/organisms/active-contact'
 import Script from 'react-load-script'
 
 const Body = styled.div`
-    img{
-        float:right;
-        max-width:350px;
-        margin-left:20px;
-        margin-bottom:20px;
-    }
-    h2{
-        font-size:52px;
-    }
+
 `
 
 const Form = styled.div`
@@ -80,7 +72,7 @@ const options = {
                 return <img
                   title={ title ? title['en-US'] : null}
                   alt={description ?  description['en-US'] : null}
-                  src={file['en-US'].url}
+                  src={file['en-US'].url+'?w=572&q=90'}
                 />
               case 'application':
                 return <a
@@ -152,17 +144,19 @@ export const PagePostTemplate = ({
                     border:0px;
                     text-decoration:none;
                 }
-                i{
-                    border:5px solid ${variable.darkGray};
-                    width:65px;
-                    height:65px;
-                    border-radius:100%;
-                    margin-right:13px;
-                    display:flex !important;
-                    align-items:center;
-                    justify-content:center;
-                    font-size:34px;
-                    color:${variable.darkGray};
+                .engage{
+                    i{
+                        border:5px solid ${variable.darkGray};
+                        width:65px;
+                        height:65px;
+                        border-radius:100%;
+                        margin-right:13px;
+                        display:flex !important;
+                        align-items:center;
+                        justify-content:center;
+                        font-size:34px;
+                        color:${variable.darkGray};
+                    }
                 }
                 body ._form_7{
                     ._form-thank-you{
@@ -309,9 +303,11 @@ export const PagePostTemplate = ({
                                 border:2px solid white !important;
                             }
                         }
-                        i{
-                            border:5px solid white;
-                            color:white;
+                        .engage{
+                            i{
+                                border:5px solid white;
+                                color:white;
+                            }
                         }
                         .fa-rss{
                             color:white;
@@ -336,6 +332,14 @@ export const PagePostTemplate = ({
                             color:white !important;
                         }
                     }
+                    @media (max-width: ${variable.tabletWidth}) {
+                        .main{
+                            img{
+                                max-width:calc(100% + 30px);
+                                margin-left: -15px;
+                            }
+                        }
+                    }
                 `}
             />
             <Container>   
@@ -344,7 +348,7 @@ export const PagePostTemplate = ({
                 </Body>
                 {homePage === true && <BlogSection></BlogSection>}
                 {slug === '/engage' &&
-                <div>
+                <div className="engage">
 
 <Script
       url="https://digett.activehosted.com/f/embed.php?id=9"
@@ -352,10 +356,7 @@ export const PagePostTemplate = ({
                <Script
       url="https://digett.activehosted.com/f/embed.php?id=7"
     />     
-                    {/* <Helmet>
-                    <script src="https://digett.activehosted.com/f/embed.php?id=9" type="text/javascript" charset="utf-8"></script>
-                    <script src="https://digett.activehosted.com/f/embed.php?id=7" type="text/javascript" charset="utf-8"></script>
-                    </Helmet> */}
+
                     <h3>Get the RSS Feed</h3>
                     <a href="/rss.xml"><i class="fas fa-rss"></i></a>
                     <Form>
