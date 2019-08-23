@@ -96,8 +96,11 @@ const TopMenuLinks = ({footerMenuLinks}) => {
         <Nav className="top-menu">
             <Global
                 styles={css`
-                .main-links-container li:last-child{
+                .main-links-container {
+                    display:inline-flex;
+                    li:last-child{
                         margin-left:40px;
+                    }
                 }
                 .top-menu{
                     .logodark{
@@ -163,19 +166,11 @@ const TopMenuLinks = ({footerMenuLinks}) => {
         <ul>
             <li className="logo logowhite"><Link to="/"><img src={variable.logo}/></Link></li>
             <li className="logo logodark"><Link to="/"><img src={variable.logodark}/></Link></li>
-          {/* {topMenuLinks.map((menuitem, index) =>(
-            <li key={index}><a href={menuitem.link}>{menuitem.name}{menuitem.icon != null && <i class={menuitem.icon}></i>}</a></li>
-          ))} */}
-          {/* <li className="dark-mode">
-          <button className="dark-switcher" onClick={theme.toggleDark}>
-            {theme.dark ? <span>Light mode ☀</span> : <span>Dark mode ☾</span>}
-          </button>
-      </li> */}
-        <li className="main-links-container">
+        <div className="main-links-container">
             {footerMenuLinks.map((menuitem, index) =>(
             <li key={index}><Link to={menuitem.link}>{menuitem.name}{menuitem.icon != null && <i class={menuitem.icon}></i>}</Link></li>
           ))}
-          </li>
+          </div>
       <li className="mobile-menu-list">
       <MobileMenu className="mobile-menu"></MobileMenu>
       </li>
