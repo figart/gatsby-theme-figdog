@@ -181,7 +181,7 @@ render(){
                     h1{
                         color:${variable.primaryColor};
                         font-size:52px;
-                        margin:65px 0px 0px 0px;
+                        margin:35px 0px 0px 0px;
                         @media (max-width: ${variable.tabletWidth}) {
                             margin:0px 0px 0px 0px;
                             font-size:30px;
@@ -189,7 +189,7 @@ render(){
                     }
                     .blog-post-date{
                         color:${variable.orange};
-                        font-size:18px;
+                        font-size:20px;
                         margin-top:10px;
                         a{
                             color:${variable.orange};

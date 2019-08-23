@@ -165,6 +165,9 @@ export const PagePostTemplate = ({
                     color:${variable.darkGray};
                 }
                 body ._form_7{
+                    ._form-thank-you{
+                        color:${variable.darkGray} !important;
+                    }
                     margin-top:20px !important;
                     ._form-title{
                         color:${variable.darkGray} !important;
@@ -252,11 +255,23 @@ export const PagePostTemplate = ({
                         }
                     }
                         ._form_9{
+                            ._form-thank-you{
+                                color:${variable.darkGray} !important;
+                            }
                         margin-top:50px;
                         button#_form_9_submit{
                             background: transparent !important;
                             color:${variable.darkGray} !important;
                             border:2px solid ${variable.darkGray} !important;
+                            font-weight:400 !important;
+                            border-radius: 25px !important;
+                            border:2px solid ${variable.darkGray} !important;
+                            background:transparent !important;
+                            color:${variable.darkGray} !important;
+                            border-radius:25px !important;
+                            height:50px !important;
+                            font-size: 24px;
+                            padding: 0px 15px 0px 15px !important;
                             font-weight:400 !important;
                         }
                         ._form-content{
@@ -286,6 +301,9 @@ export const PagePostTemplate = ({
                     }
                     .dark{
                         ._form_9{
+                            ._form-thank-you{
+                                color:white !important;
+                            }
                             button#_form_9_submit{
                                 color:white !important;
                                 border:2px solid white !important;
@@ -300,6 +318,9 @@ export const PagePostTemplate = ({
                             border-color:white !important;
                         }
                         ._form_7{
+                            ._form-thank-you{
+                                color:white !important;
+                            }
                             ._form-title{
                                 color:white !important;
                             }

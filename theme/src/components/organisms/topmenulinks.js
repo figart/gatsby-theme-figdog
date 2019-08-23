@@ -89,13 +89,16 @@ const Nav = styled.nav`
 
 `
 
-const TopMenuLinks = ({topMenuLinks}) => {
+const TopMenuLinks = ({footerMenuLinks}) => {
 
     return(
 
         <Nav className="top-menu">
             <Global
                 styles={css`
+                .main-links:last-child{
+                        margin-left:40px;
+                }
                 .top-menu{
                     .logodark{
                         display:none;
@@ -133,6 +136,9 @@ const TopMenuLinks = ({topMenuLinks}) => {
                     }
                 }
                 @media (max-width: ${variable.tabletWidth}) {
+                    .main-links{
+                        display:none !important;
+                    }
                     .top-menu{
                         .logodark{
                             display:block;
@@ -165,15 +171,11 @@ const TopMenuLinks = ({topMenuLinks}) => {
             {theme.dark ? <span>Light mode ☀</span> : <span>Dark mode ☾</span>}
           </button>
       </li> */}
-      <li className="dark-mode">
-      <ThemeContext.Consumer>
-            {theme => (
-          <button className="dark-switcher" onClick={theme.toggleDark}>
-              <span className="dark-title">DARK MODE</span><span className="dark-icon"></span>
-          </button>
-        )}
-           </ThemeContext.Consumer> 
-      </li>
+        <li className="main-links-container">
+            {footerMenuLinks.map((menuitem, index) =>(
+            <li className="main-links" key={index}><Link to={menuitem.link}>{menuitem.name}{menuitem.icon != null && <i class={menuitem.icon}></i>}</Link></li>
+          ))}
+          </li>
       <li className="mobile-menu-list">
       <MobileMenu className="mobile-menu"></MobileMenu>
       </li>

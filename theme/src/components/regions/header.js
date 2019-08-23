@@ -17,7 +17,8 @@ const HeaderStyle = styled.header`
 
 export const Header = ({
     menuLinks,
-    topMenuLinks
+    topMenuLinks,
+    footerMenuLinks
   }) => {
     return (
         <HeaderStyle className="fig-header">
@@ -48,6 +49,7 @@ export const Header = ({
             <TopMenuLinks
             topMenuLinks={topMenuLinks}
             menuLinks={menuLinks}
+            footerMenuLinks={footerMenuLinks}
             >
             </TopMenuLinks>
         </Container>

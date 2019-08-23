@@ -55,6 +55,12 @@ return(
             <Global
             styles={css`
                 .blog-teaser{
+                  h2{
+                    margin:0px;
+                  }
+                  .blog-post-date{
+                    font-size:20px;
+                  }
                     color:${variable.primaryColor};
                     a.blog-teaser-link-title{
                         color:${variable.primaryColor};
@@ -91,9 +97,12 @@ return(
                 }
             `}
             />
-        <Link className="blog-teaser-link-title" to={post.fields.slug}>
-            {post.title}
-        </Link>
+        
+        <h2>
+          <Link className="blog-teaser-link-title" to={post.fields.slug}>
+              {post.title}
+          </Link>
+        </h2>
         <div className="blog-post-date">by {post.author.name} | {post.blogDate} </div>           {post.teaser && <div className="blog-teaser-body">{documentToReactComponents(post.teaser.json, options) }</div>}
         
     

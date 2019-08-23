@@ -5,7 +5,7 @@ import BlogTeaser from "../../entities/blog/blog-teaser"
 
 const BlogListStyle = styled.section`
 
-  
+  margin-top:30px;
 
 `;
 

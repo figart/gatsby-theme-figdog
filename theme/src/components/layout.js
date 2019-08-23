@@ -59,6 +59,15 @@ const Layout = ({ children }) => (
         <Global
             styles={css`
             body{
+              h1{
+                font-size:52px;
+                @media (max-width: ${variable.tabletWidth}) {
+                  font-size:30px;
+                }
+              }
+              h2{
+                font-size:28px;
+              }
               background-image:url(${bg});
               background-position: center;
               background-size: 1150px;
@@ -118,7 +127,7 @@ const Layout = ({ children }) => (
                     }
                     p{
                       line-height: 35px;
-                      margin:40px 0px;
+                      margin:20px 0px;
                       font-size:20px;
                       @media (max-width: ${variable.tabletWidth}) {
                         margin:25px 0px;
@@ -145,6 +154,7 @@ const Layout = ({ children }) => (
         <Header 
         topMenuLinks={data.site.siteMetadata.topMenuLinks}
         menuLinks={data.site.siteMetadata.menuLinks}
+        footerMenuLinks={data.site.siteMetadata.footerMenuLinks}
         />
         <div className="main">
           {children}
