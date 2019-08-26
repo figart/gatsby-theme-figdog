@@ -112,10 +112,13 @@ export const query = graphql`
 
 `
 export const addActive = (id) => {
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = 'https://digett.activehosted.com/f/embed.php?id='+id;    
-    document.getElementsByTagName('head')[0].appendChild(script);
+    if (typeof window !== "undefined") {
+            //do work
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = 'https://digett.activehosted.com/f/embed.php?id='+id;    
+            document.getElementsByTagName('head')[0].appendChild(script);
+    }
 }
 
 class PagePostTemplate extends React.Component{
