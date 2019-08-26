@@ -119,11 +119,13 @@ export const addActive = (id) => {
 }
 
 class PagePostTemplate extends React.Component{
-
+    state = {
+        slug: '',
+      }
     componentDidMount(){
-        // console.log('mount')
-        addActive('7');
-        addActive('9');
+
+        // addActive('7');
+        // addActive('9');
 
     }
 
@@ -360,6 +362,8 @@ class PagePostTemplate extends React.Component{
                 {homePage === true && <BlogSection></BlogSection>}
                 {slug === '/engage' &&
                 <div className="engage">
+                    {addActive('7')}
+                    {addActive('9')}
 
 {/* <Script
       url="https://digett.activehosted.com/f/embed.php?id=9"
