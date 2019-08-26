@@ -111,15 +111,26 @@ export const query = graphql`
     }
 
 `
+export const addActive = (id) => {
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://digett.activehosted.com/f/embed.php?id='+id;    
+    document.getElementsByTagName('head')[0].appendChild(script);
+}
 
-export const PagePostTemplate = ({
-    title,
-    homePage,
-    subTitle,
-    slug,
-    body,
-    
-  }) => {
+class PagePostTemplate extends React.Component{
+
+    componentDidMount(){
+        // console.log('mount')
+        addActive('7');
+        addActive('9');
+
+    }
+
+
+
+  render(){
+    const {title,homePage,subTitle,slug,body} = this.props
     return (
         <Layout>
             <Global
@@ -350,12 +361,12 @@ export const PagePostTemplate = ({
                 {slug === '/engage' &&
                 <div className="engage">
 
-<Script
+{/* <Script
       url="https://digett.activehosted.com/f/embed.php?id=9"
-    />
-               <Script
+    /> */}
+               {/* <Script
       url="https://digett.activehosted.com/f/embed.php?id=7"
-    />     
+    />      */}
 
                     <h3>Get the RSS Feed</h3>
                     <a href="/rss.xml"><i class="fas fa-rss"></i></a>
@@ -373,6 +384,7 @@ export const PagePostTemplate = ({
             </Container>
         </Layout>
     )
+    }
   }
 
 const Page = ({ data }) => {

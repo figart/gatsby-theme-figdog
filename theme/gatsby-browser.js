@@ -1,6 +1,7 @@
 import React from 'react'
 import { ThemeProvider } from 'figdog-theme/src/components/context/ThemeContext'
 import { Helmet } from "react-helmet"
+import Script from 'react-load-script'
 
 // highlight-start
 export const wrapRootElement = ({ element }) => (
@@ -8,7 +9,6 @@ export const wrapRootElement = ({ element }) => (
 )
 // highlight-end
 
-
-export const onInitialClientRender = () => {
-
-}
+// exports.onInitialClientRender = () => {
+//   console.log("ReactDOM.render has executed")
+// }
