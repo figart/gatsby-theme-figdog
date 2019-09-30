@@ -12,6 +12,8 @@ import dog from "figdog-theme/src/images/dog.png";
 import whiteDog from "figdog-theme/src/images/whitedog.png";
 import { Disqus, CommentCount } from "gatsby-plugin-disqus";
 import { Helmet } from "react-helmet";
+import { PopupboxManager, PopupboxContainer } from "react-popupbox";
+import "react-popupbox/dist/react-popupbox.css";
 
 const Bold = ({ children }) => <span className="bold">{children}</span>;
 const Text = ({ children }) => <p className="align-center">{children}</p>;
@@ -26,17 +28,55 @@ const options = {
   renderNode: {
     [BLOCKS.EMBEDDED_ENTRY]: node => {
       const { id } = node.data.target.sys.contentType.sys;
+
       switch (id) {
         case "imageWithTagline":
           const { image, tagline } = node.data.target.fields;
           const { title, description, file } = image["en-US"].fields;
+          var closePopupbox = e => {
+            PopupboxManager.close({
+              fadeInSpeed: 10
+            });
+          };
+          var openPopupbox = (e, file) => {
+            const content = (
+              <div>
+                <img
+                  title={title ? title["en-US"] : null}
+                  alt={description ? description["en-US"] : null}
+                  src={file["en-US"].url + "?w=1920&q=90"}
+                />
+                <div className="popclose-parent">
+                  <div
+                    className="popclose"
+                    onClick={e => {
+                      closePopupbox(e);
+                    }}
+                  ></div>
+                </div>
+              </div>
+            );
+            PopupboxManager.open({
+              content,
+              fadeInSpeed: 10,
+              config: {}
+            });
+          };
           return (
             <div className="image-with-tagline">
-              <img
-                title={title ? title["en-US"] : null}
-                alt={description ? description["en-US"] : null}
-                src={file["en-US"].url + "?w=572&q=90"}
-              />
+              <div className="image-container">
+                <i
+                  onClick={e => {
+                    openPopupbox(e, file);
+                  }}
+                  class="fas fa-search-plus"
+                ></i>
+                <img
+                  title={title ? title["en-US"] : null}
+                  alt={description ? description["en-US"] : null}
+                  src={file["en-US"].url + "?w=572&q=90"}
+                />
+              </div>
               <div className="image-tagline">{tagline["en-US"]}</div>
             </div>
           );
@@ -49,12 +89,49 @@ const options = {
 
       switch (mimeGroup) {
         case "image":
+          var closePopupbox = e => {
+            PopupboxManager.close({
+              fadeInSpeed: 10
+            });
+          };
+          var openPopupbox = (e, file) => {
+            const content = (
+              <div>
+                <img
+                  title={title ? title["en-US"] : null}
+                  alt={description ? description["en-US"] : null}
+                  src={file["en-US"].url + "?w=1920&q=90"}
+                />
+                <div className="popclose-parent">
+                  <div
+                    className="popclose"
+                    onClick={e => {
+                      closePopupbox(e);
+                    }}
+                  ></div>
+                </div>
+              </div>
+            );
+            PopupboxManager.open({
+              content,
+              fadeInSpeed: 10,
+              config: {}
+            });
+          };
           return (
-            <img
-              title={title ? title["en-US"] : null}
-              alt={description ? description["en-US"] : null}
-              src={file["en-US"].url}
-            />
+            <div className="image-container">
+              <i
+                onClick={e => {
+                  openPopupbox(e, file);
+                }}
+                class="fas fa-search-plus"
+              ></i>
+              <img
+                title={title ? title["en-US"] : null}
+                alt={description ? description["en-US"] : null}
+                src={file["en-US"].url + "?w=572&q=90"}
+              />
+            </div>
           );
         case "imageWithTagline":
           return <div>tester</div>;
@@ -130,6 +207,7 @@ class BlogPostTemplate extends Component {
   //     // window.open('http://www.linkedin.com/shareArticle?mini=true&url='+encodeURIComponent(url), '', 'left=0,top=0,width=650,height=420,personalbar=0,toolbar=0,scrollbars=0,resizable=0');
   //       const linkedInUrl = 'https://www.linkedin.com/shareArticle?mini=true&title=' + title + '&url=https://figdog.com' + slug + '&summary=' + teaser
   //       const twitterShareUrl = 'https://twitter.com/share?text=' + title + '&url=' + 'http://figdog.com' + slug
+
   linkedInClick = (e, slug, title) => {
     window.open(
       "http://www.linkedin.com/shareArticle?mini=true&title=" +
@@ -172,9 +250,9 @@ class BlogPostTemplate extends Component {
       identifier: post.id,
       title: title
     };
-    console.log(post);
     return (
       <Layout>
+        <PopupboxContainer />
         <Helmet>
           <meta charSet="utf-8" />
           <title>{title} | figdog</title>
@@ -188,6 +266,55 @@ class BlogPostTemplate extends Component {
         </Helmet>
         <Global
           styles={css`
+            .popclose-parent {
+              filter: drop-shadow(-1px 6px 3px rgba(50, 50, 0, 0.5));
+              z-index: 99999999999999;
+              position: absolute;
+              top: 40px;
+              right: 40px;
+            }
+            .popclose {
+              height: 60px !important;
+              width: 60px !important;
+              clip-path: polygon(
+                20% 0%,
+                0% 20%,
+                30% 50%,
+                0% 80%,
+                20% 100%,
+                50% 70%,
+                80% 100%,
+                100% 80%,
+                70% 50%,
+                100% 20%,
+                80% 0%,
+                50% 30%
+              );
+              background-color: white;
+              cursor: pointer;
+            }
+            .popupbox-content div:not(.nav):not(.indicators) {
+              height: 100%;
+            }
+            .popupbox-content {
+              padding: 0px;
+            }
+            .popupbox-wrapper {
+              max-width: 100%;
+              border-radius: 0px;
+            }
+            .image-container {
+              position: relative;
+              i {
+                font-size: 34px;
+                color: white;
+                position: absolute;
+                bottom: 20px;
+                left: 20px;
+                text-shadow: -3px 3px 4px ${variable.darkGray};
+                cursor: pointer;
+              }
+            }
             .blog-body {
               margin-top: 45px;
               a {
@@ -254,7 +381,7 @@ class BlogPostTemplate extends Component {
                 color: ${variable.orange};
                 font-size: 20px;
                 font-style: italic;
-                text-align: center;
+                text-align: left;
                 font-family: Georgia, Times, "Times New Roman";
                 margin-top: 5px;
                 line-height: 1.3;
@@ -298,7 +425,8 @@ class BlogPostTemplate extends Component {
             </div>
 
             <div className="blog-body">
-              {documentToReactComponents(body, options)}
+              {console.log(this)}
+              {documentToReactComponents(body, options, this)}
             </div>
             <Disqus className="disqus" config={disqusConfig} />
           </div>

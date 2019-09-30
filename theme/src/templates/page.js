@@ -202,8 +202,8 @@ class PagePostTemplate extends React.Component {
                 button#_form_7_submit._submit {
                   width: 100% !important;
                   border: 2px solid ${variable.darkGray} !important;
-                  background: transparent !important;
-                  color: ${variable.darkGray} !important;
+                  background: ${variable.darkGray} !important;
+                  color: white !important;
                   border-radius: 25px !important;
                   height: 50px !important;
                   font-size: 24px;
@@ -279,14 +279,12 @@ class PagePostTemplate extends React.Component {
               }
               margin-top: 50px;
               button#_form_9_submit {
-                background: transparent !important;
-                color: ${variable.darkGray} !important;
                 border: 2px solid ${variable.darkGray} !important;
                 font-weight: 400 !important;
                 border-radius: 25px !important;
                 border: 2px solid ${variable.darkGray} !important;
-                background: transparent !important;
-                color: ${variable.darkGray} !important;
+                background: ${variable.darkGray} !important;
+                color: white !important;
                 border-radius: 25px !important;
                 height: 50px !important;
                 font-size: 24px;
