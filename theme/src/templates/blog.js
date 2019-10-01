@@ -218,6 +218,11 @@ class BlogPostTemplate extends Component {
     e.preventDefault();
   };
 
+  dogClick = e => {
+    window.scrollTo(0, 0);
+    e.preventDefault();
+  };
+
   render() {
     const {
       title,
@@ -408,9 +413,6 @@ class BlogPostTemplate extends Component {
                     color: ${variable.lightGray};
                   }
                 }
-                .image-tagline {
-                  color: ${variable.lightGray};
-                }
               }
             }
             @media (max-width: ${variable.mobileWidth}) {
@@ -428,7 +430,6 @@ class BlogPostTemplate extends Component {
             </div>
 
             <div className="blog-body">
-              {console.log(this)}
               {documentToReactComponents(body, options, this)}
             </div>
             <Disqus className="disqus" config={disqusConfig} />
@@ -448,7 +449,12 @@ class BlogPostTemplate extends Component {
                 <i class="fab fa-twitter"></i>
               </a>
             </div>
-            <div className="dogs">
+            <div
+              className="dogs"
+              onClick={e => {
+                this.dogClick(e, slug, title);
+              }}
+            >
               <img className="white-dog" src={whiteDog} />
               <img className="dog" src={dog} />
             </div>
