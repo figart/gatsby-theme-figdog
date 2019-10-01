@@ -7,7 +7,7 @@ module.exports = options => ({
   siteMetadata: {
     blogPath: options.blogPath || `/blog`,
     siteTitle: options.siteTitle || `Figdog Theme`,
-    title: options.title || `Figdog Theme RSS Feed`,
+    title: options.title || `figdog`,
     description: options.description || `Our fancy slogan to capture views`,
     siteUrl: options.siteUrl || `https://fig.dog`,
     siteSlogan: options.siteSlogan || `Our fancy slogan to capture views`,
