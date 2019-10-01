@@ -160,7 +160,7 @@ module.exports = options => ({
                           .childContentfulRichText.html
                     },
                     {
-                      author: edge.node.author.name
+                      "dc:creator": edge.node.author.name
                     }
                   ]
                 });
