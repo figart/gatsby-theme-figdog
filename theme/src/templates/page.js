@@ -389,7 +389,7 @@ class PagePostTemplate extends React.Component {
                 <div class="social">
                   <a
                     target="_blank"
-                    href="https://www.linkedin.com/https://www.linkedin.com/in/figart"
+                    href="https://www.linkedin.com/in/figart"
                   >
                     <i class="fab fa-linkedin-in"></i>
                   </a>
