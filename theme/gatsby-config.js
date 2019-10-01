@@ -9,7 +9,7 @@ module.exports = options => ({
     siteTitle: options.siteTitle || `Figdog Theme`,
     title: options.title || `Figdog Theme RSS Feed`,
     description: options.description || `Our fancy slogan to capture views`,
-    siteUrl: options.siteUrl || `https://figdog.com`,
+    siteUrl: options.siteUrl || `https://fig.dog`,
     siteSlogan: options.siteSlogan || `Our fancy slogan to capture views`,
     logo: options.logo || `/src/images/Logo-White.png`,
     logodark: options.logo || `/src/images/Logo-Dark.png`,

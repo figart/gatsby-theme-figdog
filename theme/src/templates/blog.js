@@ -40,19 +40,18 @@ const options = {
           };
           var openPopupbox = (e, file) => {
             const content = (
-              <div>
+              <div
+                onClick={e => {
+                  closePopupbox(e);
+                }}
+              >
                 <img
                   title={title ? title["en-US"] : null}
                   alt={description ? description["en-US"] : null}
                   src={file["en-US"].url + "?w=1920&q=90"}
                 />
                 <div className="popclose-parent">
-                  <div
-                    className="popclose"
-                    onClick={e => {
-                      closePopupbox(e);
-                    }}
-                  ></div>
+                  <div className="popclose"></div>
                 </div>
               </div>
             );
@@ -64,13 +63,13 @@ const options = {
           };
           return (
             <div className="image-with-tagline">
-              <div className="image-container">
-                <i
-                  onClick={e => {
-                    openPopupbox(e, file);
-                  }}
-                  class="fas fa-search-plus"
-                ></i>
+              <div
+                className="image-container"
+                onClick={e => {
+                  openPopupbox(e, file);
+                }}
+              >
+                <i class="fas fa-search-plus"></i>
                 <img
                   title={title ? title["en-US"] : null}
                   alt={description ? description["en-US"] : null}
@@ -96,19 +95,18 @@ const options = {
           };
           var openPopupbox = (e, file) => {
             const content = (
-              <div>
+              <div
+                onClick={e => {
+                  closePopupbox(e);
+                }}
+              >
                 <img
                   title={title ? title["en-US"] : null}
                   alt={description ? description["en-US"] : null}
                   src={file["en-US"].url + "?w=1920&q=90"}
                 />
                 <div className="popclose-parent">
-                  <div
-                    className="popclose"
-                    onClick={e => {
-                      closePopupbox(e);
-                    }}
-                  ></div>
+                  <div className="popclose"></div>
                 </div>
               </div>
             );
@@ -119,13 +117,13 @@ const options = {
             });
           };
           return (
-            <div className="image-container">
-              <i
-                onClick={e => {
-                  openPopupbox(e, file);
-                }}
-                class="fas fa-search-plus"
-              ></i>
+            <div
+              className="image-container"
+              onClick={e => {
+                openPopupbox(e, file);
+              }}
+            >
+              <i class="fas fa-search-plus"></i>
               <img
                 title={title ? title["en-US"] : null}
                 alt={description ? description["en-US"] : null}
@@ -413,6 +411,11 @@ class BlogPostTemplate extends Component {
                 .image-tagline {
                   color: ${variable.lightGray};
                 }
+              }
+            }
+            @media (max-width: ${variable.mobileWidth}) {
+              .popclose-parent {
+                display: none;
               }
             }
           `}
