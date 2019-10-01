@@ -8,7 +8,9 @@ module.exports = options => ({
     blogPath: options.blogPath || `/blog`,
     siteTitle: options.siteTitle || `Figdog Theme`,
     title: options.title || `figdog`,
-    description: options.description || `Our fancy slogan to capture views`,
+    description:
+      options.description ||
+      `Reflections on technology, the information technology services industry, and digital marketing.`,
     siteUrl: options.siteUrl || `https://fig.dog`,
     siteSlogan: options.siteSlogan || `Our fancy slogan to capture views`,
     logo: options.logo || `/src/images/Logo-White.png`,
@@ -156,6 +158,9 @@ module.exports = options => ({
                       "content:encoded":
                         edge.node.childContentfulBlogBodyRichTextNode
                           .childContentfulRichText.html
+                    },
+                    {
+                      author: edge.node.author.name
                     }
                   ]
                 });
@@ -170,6 +175,9 @@ module.exports = options => ({
                               node {
                                 blogDate
                                 title
+                                author{
+                                  name
+                                }
                                 teaser {
                                   json
                                 }
