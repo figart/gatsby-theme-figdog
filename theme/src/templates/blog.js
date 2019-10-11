@@ -261,7 +261,7 @@ class BlogPostTemplate extends Component {
           <title>{title} | figdog</title>
           {post.metaDescription && (
             <meta
-              property="og:description"
+              name="description"
               content={post.metaDescription.metaDescription}
             />
           )}

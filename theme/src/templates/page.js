@@ -142,7 +142,7 @@ class PagePostTemplate extends React.Component {
           <title>{title} | figdog</title>
           {post.metaDescription && (
             <meta
-              property="og:description"
+              name="description"
               content={post.metaDescription.metaDescription}
             />
           )}
@@ -387,10 +387,7 @@ class PagePostTemplate extends React.Component {
                 <div class="_form_7"></div>
                 <h3 className="social-header">Find me on Social Media</h3>
                 <div class="social">
-                  <a
-                    target="_blank"
-                    href="https://www.linkedin.com/in/figart"
-                  >
+                  <a target="_blank" href="https://www.linkedin.com/in/figart">
                     <i class="fab fa-linkedin-in"></i>
                   </a>
                   <a target="_blank" href="https://twitter.com/figart?lang=en">
