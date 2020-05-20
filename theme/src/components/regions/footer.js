@@ -75,7 +75,7 @@ export const Footer = ({
             <FooterMenuLinks
             footerMenuLinks={footerMenuLinks}
             ></FooterMenuLinks>
-            <div className="footer-copy">Copyright 2019 figdog</div>
+            <div className="footer-copy">Copyright 2020 figdog</div>
         </Container>
     </FooterStyle>
 
